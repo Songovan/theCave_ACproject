@@ -1,4 +1,7 @@
 package org.academiadecodigo.batmancave.gameobjects;
 
-public class GameObject {
+public abstract class GameObject {
+
+    //getMessage
+    public abstract void getMessage ();
 }
