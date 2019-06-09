@@ -1,4 +1,7 @@
 package org.academiadecodigo.batmancave.gameobjects.enemies;
 
-public class Enemy {
+import org.academiadecodigo.batmancave.gameobjects.GameObject;
+
+public class Enemy extends GameObject {
+
 }
