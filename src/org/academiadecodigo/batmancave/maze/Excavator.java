@@ -9,6 +9,7 @@ public class Excavator {
     private Stack stack;
     private Cell[][] layout;
     private int numSteps;
+    private final int[] noMove = {0,0};
 
     public Excavator(Cell[][] layout) {
         stack = new Stack();
@@ -21,45 +22,51 @@ public class Excavator {
     public int[] move() {
 
         // Get current position stored in stack
-        System.out.println(stack.size());
 
         int col = ((int[])stack.get(stack.size()-1))[0];
         int row = ((int[])stack.get(stack.size()-1))[1];
 
-        layout[col][row].getType().isExcavated();
+        layout[col][row].excavate();
 
         boolean[] availableRooms = {false, false, false, false}; // UP - RIGHT - DOWN - LEFT
 
         // UP
         if(row - 2 > 0 &&
                 layout[col][row - 2].getType() == CellType.ROOM &&
-                !layout[col][row - 2].getType().getExcavated()) {
+                !layout[col][row - 2].isExcavated()) {
+            System.out.println("true 1");
             availableRooms[0] = true; // Room is available
         }
 
         // RIGHT
-        if(col + 2 > layout.length &&
+        if(col + 2 < layout.length &&
                 layout[col + 2][row].getType() == CellType.ROOM &&
-                !layout[col + 2][row].getType().getExcavated()) {
+                !layout[col + 2][row].isExcavated()) {
+            System.out.println("true 2");
             availableRooms[1] = true; // Room is available
         }
 
         // DOWN
-        if(row + 2 > layout[0].length &&
+        if(row + 2 < layout[0].length &&
                 layout[col][row + 2].getType() == CellType.ROOM &&
-                !layout[col][row + 2].getType().getExcavated()) {
+                !layout[col][row + 2].isExcavated()) {
+            System.out.println("true 3");
             availableRooms[2] = true; // Room is available
         }
 
         // LEFT
         if(col - 2 > 0 &&
                 layout[col - 2][row].getType() == CellType.ROOM &&
-                !layout[col - 2][row].getType().getExcavated()) {
+                !layout[col - 2][row].isExcavated()) {
             availableRooms[3] = true; // Room is available
         }
 
 
         Directions move = randomRoom(availableRooms);
+
+        if (move == null) {
+            return noMove;
+        }
 
         int nextCol = 0;
         int nextRow = 0;
@@ -69,25 +76,25 @@ public class Excavator {
                 nextCol = 0;
                 nextRow = -2;
                 layout[col][row - 1].setType(CellType.ROOM);
-                layout[col][row - 1].getType().isExcavated();
+                layout[col][row - 1].excavate();
                 break;
             case RIGHT:
                 nextCol = 2;
                 nextRow = 0;
                 layout[col + 1][row].setType(CellType.ROOM);
-                layout[col + 1][row].getType().isExcavated();
+                layout[col + 1][row].excavate();
                 break;
             case DOWN:
                 nextCol = 0;
                 nextRow = 2;
                 layout[col][row + 1].setType(CellType.ROOM);
-                layout[col][row + 1].getType().isExcavated();
+                layout[col][row + 1].excavate();
                 break;
             case LEFT:
                 nextCol = -2;
                 nextRow = 0;
                 layout[col - 1][row].setType(CellType.ROOM);
-                layout[col - 1][row].getType().isExcavated();
+                layout[col - 1][row].excavate();
                 break;
             default:
                 nextCol = 0;
@@ -139,7 +146,11 @@ public class Excavator {
             }
         }
 
-        return (Directions) helper.get((int)Math.floor(Math.random() * helper.size()));
+        if(helper.size() == 0) {
+            return null;
+        } else {
+            return (Directions) helper.get((int)Math.floor(Math.random() * helper.size()));
+        }
 
     }
 

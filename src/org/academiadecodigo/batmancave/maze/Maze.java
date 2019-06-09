@@ -49,12 +49,16 @@ public class Maze {
 
     public void generate() {
 
+
+
         int[] start = {1,1};
         int[] nextMove = new int[2];
         excavator.getStack().empty();
         excavator.getStack().push(start);
 
         while(excavator.getStack().size() > 0) {
+
+            printMaze();
 
             nextMove = excavator.move();
 
@@ -66,7 +70,7 @@ public class Maze {
 
             excavator.addStep();
 
-            if (excavator.getNumSteps() > 400) {
+            if (excavator.getNumSteps() > 800) {
                 break;
             }
 

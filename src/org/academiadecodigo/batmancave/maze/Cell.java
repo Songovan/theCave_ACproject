@@ -4,10 +4,13 @@ public class Cell {
 
     private CellType type;
     private int[] position;
+    private boolean excavated;
+
 
     public Cell(CellType type) {
         this.type = type;
         position = new int[2];
+        excavated = false;
     }
 
     public void setPosition(int col, int row) {
@@ -23,7 +26,15 @@ public class Cell {
         return type;
     }
 
+    public boolean isExcavated() {
+        return excavated;
+    }
+
     public void setType(CellType type) {
         this.type = type;
+    }
+
+    public void excavate() {
+        excavated = true;
     }
 }

@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Maze maze = new Maze(9,9);
+        Maze maze = new Maze(41,41);
 
         maze.init();
 
