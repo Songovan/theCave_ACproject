@@ -14,7 +14,12 @@ public class MazeGfx {
     private int cellSize;
     private Picture player;
     private Picture ghost;
-    private int playerDelay = 50;
+
+    public int getPlayerDelay() {
+        return playerDelay;
+    }
+
+    private int playerDelay = 100;
 
     public MazeGfx(Maze maze) {
         this.maze = maze;
@@ -92,9 +97,8 @@ public class MazeGfx {
 
     public void movePlayer (int col, int row) {
 
-
-
         player.translate((double)(col*cellSize),(double)(row * cellSize));
+        player.draw();
     }
 
 

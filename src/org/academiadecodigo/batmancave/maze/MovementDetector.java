@@ -24,6 +24,9 @@ public class MovementDetector {
 
         switch (direction) {
             case UP:
+                //if (maze.getLayout()[currentCol-1][currentRow].getType() == CellType.ROOM || maze.getLayout()[currentCol-1][currentRow].getType() == CellType.ROOM ) {
+                  //  return false;
+                //} else
                 if (maze.getLayout()[currentCol][currentRow - 1].getType() == CellType.ROOM) {
                     return true;
                 } else {
