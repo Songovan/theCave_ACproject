@@ -71,7 +71,6 @@ public class Player implements KeyboardHandler {
                 if(movementDetector.checkMove(Directions.UP)) {
                     pos.changePosition(0,-1);
                     mazeGfx.movePlayer(0, -1);
-
                     // MOVE UP
                 }
                 break;

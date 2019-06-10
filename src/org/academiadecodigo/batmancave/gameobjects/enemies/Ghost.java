@@ -2,30 +2,66 @@ package org.academiadecodigo.batmancave.gameobjects.enemies;
 
 import org.academiadecodigo.batmancave.Game;
 import org.academiadecodigo.batmancave.Player;
+import org.academiadecodigo.batmancave.Position;
+import org.academiadecodigo.batmancave.gfx.MazeGfx;
+import org.academiadecodigo.batmancave.maze.Directions;
+import org.academiadecodigo.batmancave.maze.MovementDetector;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Ghost extends Enemy {
 
     //properties
     private int ghostLevel;
     private int speed = 1;
+    private Position pos;
+    private MovementDetector movementDetector;
+    private MazeGfx mazeGfx;
 
-    //behaviour method
-    public void behaviour () {
-        ghostLevel = Game.getGameLevel();
-        if (ghostLevel == 1) {
-
-        } else if (ghostLevel == 2) {
-
-        }else if (ghostLevel == 3) {
-
-        } else {
-
-        }
+    public Ghost() {
+        ghostLevel = 1;
     }
+
+
 
     //move method
     public void move () {
 
+        switch (ghostLevel) {
+            case 1:
+                // Level 1 behaviour: random movement
+
+
+
+
+
+                break;
+            case 2:
+                // Level 2 behaviour: follows if player is seen in a straight line
+
+                break;
+            case 3:
+                // follows player after first encounter
+
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
+    public void setGhostLevel(int ghostLevel) {
+        this.ghostLevel = ghostLevel;
+    }
+
+    public void setMazeGfx(MazeGfx mazeGfx) {
+        this.mazeGfx = mazeGfx;
+    }
+
+    public void setMovementDetector(MovementDetector movementDetector) {
+        this.movementDetector = movementDetector;
     }
 
     //hit method

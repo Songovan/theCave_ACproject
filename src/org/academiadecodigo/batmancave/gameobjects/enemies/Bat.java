@@ -7,7 +7,7 @@ public class Bat extends Enemy implements Defeatable{
 
     //properties
     private int damage = 1;
-    private int speed = 2 + 2*Game.getGameLevel();
+    private int speed = 2;
 
 
     //hit method

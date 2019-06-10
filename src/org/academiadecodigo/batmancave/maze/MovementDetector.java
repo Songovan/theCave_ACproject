@@ -1,15 +1,18 @@
 package org.academiadecodigo.batmancave.maze;
 
 import org.academiadecodigo.batmancave.Player;
+import org.academiadecodigo.batmancave.gameobjects.enemies.Ghost;
 
 public class MovementDetector {
 
     private Maze maze;
     private Player player;
+    private Ghost ghost;
 
-    public MovementDetector(Maze maze, Player player) {
+    public MovementDetector(Maze maze, Player player, Ghost ghost) {
         this.maze = maze;
         this.player = player;
+        this.ghost = ghost;
     }
 
     public boolean checkMove(Directions direction) {
