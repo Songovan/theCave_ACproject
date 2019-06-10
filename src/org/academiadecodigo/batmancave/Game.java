@@ -64,7 +64,7 @@ public class Game {
     public void runSound() {
         try {
 
-            File clipFile = new File("/home/songovan/projects/batman-cave/resources/atTheEndOfAllThings.wav"); // path to your clip
+            File clipFile = new File("./resources/atTheEndOfAllThings.wav"); // path to your clip
             AudioInputStream audioStrmObj = AudioSystem.getAudioInputStream(clipFile);
             AudioFormat format = audioStrmObj.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class, format);
