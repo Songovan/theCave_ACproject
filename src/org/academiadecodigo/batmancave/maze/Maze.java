@@ -58,7 +58,7 @@ public class Maze {
 
         while(excavator.getStack().size() > 0) {
 
-            printMaze();
+            //printMaze();
 
             nextMove = excavator.move();
 
@@ -70,7 +70,7 @@ public class Maze {
 
             excavator.addStep();
 
-            if (excavator.getNumSteps() > 800) {
+            if (excavator.getNumSteps() > 2000) {
                 break;
             }
 
@@ -81,6 +81,7 @@ public class Maze {
     }
 
 
+    // FOR TESTING!!!!!!
     public void printMaze() {
 
         int maxX = layout.length;
@@ -107,7 +108,7 @@ public class Maze {
 
             }
 
-            System.out.println(line);
+            //System.out.println(line);
 
         }
 
@@ -116,4 +117,7 @@ public class Maze {
     }
 
 
+    public Cell[][] getLayout() {
+        return layout;
+    }
 }
