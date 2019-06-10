@@ -1,9 +1,5 @@
 package org.academiadecodigo.batmancave.maze;
 
-import javafx.scene.control.ListCell;
-
-import java.lang.reflect.Array;
-
 public class Maze {
 
     private Cell[][] layout;

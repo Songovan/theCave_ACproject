@@ -19,7 +19,7 @@ public class MazeGfx {
         return playerDelay;
     }
 
-    private int playerDelay = 100;
+    private int playerDelay = 50;
 
     public MazeGfx(Maze maze) {
         this.maze = maze;

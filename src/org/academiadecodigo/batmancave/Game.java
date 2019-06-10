@@ -5,6 +5,9 @@ import org.academiadecodigo.batmancave.maze.Maze;
 import org.academiadecodigo.batmancave.maze.MovementDetector;
 import org.academiadecodigo.batmancave.gameobjects.enemies.Ghost;
 
+import javax.sound.sampled.*;
+import java.io.File;
+
 public class Game {
 
     private Maze maze;
@@ -22,6 +25,8 @@ public class Game {
     }
 
     public void init() {
+
+        runSound();
 
         maze.init();
 
@@ -53,6 +58,22 @@ public class Game {
             // Move Ghost
 
             // Make condition to win level and raise level
+        }
+    }
+
+    public void runSound() {
+        try {
+
+            File clipFile = new File("/home/songovan/projects/batman-cave/resources/atTheEndOfAllThings.wav"); // path to your clip
+            AudioInputStream audioStrmObj = AudioSystem.getAudioInputStream(clipFile);
+            AudioFormat format = audioStrmObj.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, format);
+            Clip audioClip = (Clip) AudioSystem.getLine(info);
+            audioClip.open(audioStrmObj);
+            audioClip.start();
+            audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (Exception ex) {
+            System.out.println("NOT");
         }
     }
 
