@@ -73,6 +73,11 @@ public class MazeGfx {
 
         player.draw();
 
+
+    }
+
+    public void movePlayer (int col, int row) {
+        player.translate(col*cellSize,row * cellSize);
     }
 
 
