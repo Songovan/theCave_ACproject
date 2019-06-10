@@ -14,6 +14,8 @@ public class MazeGfx {
     private final int PADDING = 10;
     private int cellSize;
     private Picture player;
+    private Picture ghost;
+    private int playerDelay = 50;
 
     public MazeGfx(Maze maze) {
         this.maze = maze;
@@ -34,8 +36,10 @@ public class MazeGfx {
         }
 
         drawPlayer(0, cellSize);
-
+        drawGhost();
     }
+
+
 
     private void drawCell(int col, int row) {
 
@@ -73,13 +77,44 @@ public class MazeGfx {
 
         player.draw();
 
+    }
+
+    private void drawGhost() {
+
+        int[] pos = randomPos();
+
+        ghost = new Picture(pos[0]*cellSize+5, pos[1]*cellSize+5, "death.png");
+
+        ghost.grow(-5,-5);
+
+        ghost.draw();
 
     }
 
     public void movePlayer (int col, int row) {
-        player.translate(col*cellSize,row * cellSize);
+
+
+
+        player.translate((double)(col*cellSize),(double)(row * cellSize));
     }
 
+
+    private int[] randomPos () {
+
+        int col = (int)(Math.random()*(mazeLayout.length / 2) + mazeLayout.length / 2);
+
+        int row = (int)(Math.random()*(mazeLayout[0].length / 2) + mazeLayout[0].length / 2);
+
+        int[] pos = {col, row};
+
+        if(mazeLayout[pos[0]][pos[1]].getType() == CellType.ROOM) {
+            return pos;
+        } else {
+            return randomPos();
+        }
+
+
+    }
 
 
 }

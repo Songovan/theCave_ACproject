@@ -34,7 +34,6 @@ public class Excavator {
         if(row - 2 > 0 &&
                 layout[col][row - 2].getType() == CellType.ROOM &&
                 !layout[col][row - 2].isExcavated()) {
-            System.out.println("true 1");
             availableRooms[0] = true; // Room is available
         }
 
@@ -42,7 +41,6 @@ public class Excavator {
         if(col + 2 < layout.length &&
                 layout[col + 2][row].getType() == CellType.ROOM &&
                 !layout[col + 2][row].isExcavated()) {
-            System.out.println("true 2");
             availableRooms[1] = true; // Room is available
         }
 
@@ -50,7 +48,6 @@ public class Excavator {
         if(row + 2 < layout[0].length &&
                 layout[col][row + 2].getType() == CellType.ROOM &&
                 !layout[col][row + 2].isExcavated()) {
-            System.out.println("true 3");
             availableRooms[2] = true; // Room is available
         }
 
@@ -62,7 +59,7 @@ public class Excavator {
         }
 
 
-        Directions move = randomRoom(availableRooms);
+        Directions move = RandomRoom.randomRoom(availableRooms);//randomRoom(availableRooms);
 
         if (move == null) {
             return noMove;
@@ -124,6 +121,8 @@ public class Excavator {
 
     }
 
+    /*
+
     private Directions randomRoom(boolean[] arr) {
 
         int roomCounter = 0;
@@ -132,10 +131,6 @@ public class Excavator {
             if(arr[i]) {
                 roomCounter++;
             }
-        }
-
-        for(boolean bool: arr) {
-            System.out.println(bool);
         }
 
         List helper = new ArrayList();
@@ -153,7 +148,7 @@ public class Excavator {
         }
 
     }
-
+*/
 
     public Stack getStack() {
         return stack;
