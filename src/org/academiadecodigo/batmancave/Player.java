@@ -68,31 +68,53 @@ public class Player implements KeyboardHandler {
 
         switch (key) {
             case KeyboardEvent.KEY_W:
-                if(movementDetector.checkMove(Directions.UP)) {
+                while(movementDetector.checkMove(Directions.UP)) {
                     pos.changePosition(0,-1);
                     mazeGfx.movePlayer(0, -1);
-                    // MOVE UP
+                    try {
+                        Thread.sleep(mazeGfx.getPlayerDelay());
+                        // MOVE UP
+                    } catch (InterruptedException ex) {
+                        System.out.println("");
+                    }
                 }
                 break;
             case KeyboardEvent.KEY_D:
-                if(movementDetector.checkMove(Directions.RIGHT)) {
+                while(movementDetector.checkMove(Directions.RIGHT)) {
                     pos.changePosition(1,0);
-                    mazeGfx.movePlayer(1,0);
-                    // MOVE RIGHT
+                    mazeGfx.movePlayer(1, 0);
+                    try {
+                        Thread.sleep(mazeGfx.getPlayerDelay());
+                        // MOVE UP
+                    } catch (InterruptedException ex) {
+                        System.out.println("");
+                    }
                 }
                 break;
             case KeyboardEvent.KEY_S:
-                if (movementDetector.checkMove(Directions.DOWN)) {
+                while (movementDetector.checkMove(Directions.DOWN)) {
                     pos.changePosition(0,1);
                     mazeGfx.movePlayer(0,1);
                     // MOVE DOWN
+                    try {
+                        Thread.sleep(mazeGfx.getPlayerDelay());
+                        // MOVE UP
+                    } catch (InterruptedException ex) {
+                        System.out.println("");
+                    }
                 }
                 break;
             case KeyboardEvent.KEY_A:
-                if (movementDetector.checkMove(Directions.LEFT)) {
+                while (movementDetector.checkMove(Directions.LEFT)) {
                     pos.changePosition(-1,0);
                     mazeGfx.movePlayer(-1,0);
                     // MOVE LEFT
+                     try {
+                        Thread.sleep(mazeGfx.getPlayerDelay());
+                        // MOVE UP
+                    } catch (InterruptedException ex) {
+                        System.out.println("");
+                    }
                 }
                 break;
             default:
