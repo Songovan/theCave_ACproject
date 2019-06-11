@@ -18,7 +18,7 @@ public class Game {
     private int gameLevel;
 
     public Game() {
-        maze = new Maze(41, 31);
+        maze = new Maze(61, 41);
         mazeGfx = new MazeGfx(maze);
         gameLevel = 1;
 

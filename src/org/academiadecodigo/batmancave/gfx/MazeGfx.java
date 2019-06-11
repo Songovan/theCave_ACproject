@@ -14,6 +14,7 @@ public class MazeGfx {
     private int cellSize;
     private Picture player;
     private Picture ghost;
+    private int viewRadius;
 
     public int getPlayerDelay() {
         return playerDelay;
@@ -26,26 +27,38 @@ public class MazeGfx {
         cellSize = 20;
         mazeLayout = maze.getLayout();
         window = new Rectangle(PADDING, PADDING, mazeLayout.length * cellSize, mazeLayout[0].length * cellSize);
+        viewRadius = 5;
     }
 
     public void init() {
+        window.setColor(Color.BLACK);
         window.draw();
+        window.fill();
 
         for (int i = 0; i < mazeLayout.length; i++) {
             for (int j = 0; j < mazeLayout[0].length; j++) {
 
-                drawCell(i,j);
+                mazeLayout[i][j].setCellGfx(assignCell(i,j));
 
             }
         }
 
-        drawPlayer(0, cellSize);
+        player = new Picture( 5, cellSize + 5, "robin.png");
+
+        player.grow(-5,-5);
+
+        //DRAW MAZE AROUND PLAYER
+        drawMaze();
+        drawPlayer();
+
+
+        //drawPlayer(0, cellSize);
         drawGhost();
     }
 
 
 
-    private void drawCell(int col, int row) {
+    private Rectangle assignCell(int col, int row) {
 
         CellType cell = mazeLayout[col][row].getType();
 
@@ -57,27 +70,48 @@ public class MazeGfx {
                 if(col == 0 && row == 1 || col == mazeLayout.length - 1 && row == mazeLayout[0].length - 2) {
                     cellRectangle.setColor(Color.BLUE);
                 } else {
-                    cellRectangle.setColor(Color.BLACK);
+                    cellRectangle.setColor(Color.DARK_GRAY);
                 }
-                cellRectangle.fill();
+                //cellRectangle.fill();
                 break;
             case ROOM:
                 cellRectangle = new Rectangle(col*cellSize + PADDING, row*cellSize + PADDING, cellSize, cellSize);
-                cellRectangle.setColor(Color.GRAY);
-                cellRectangle.fill();
+                cellRectangle.setColor(Color.LIGHT_GRAY);
+                //cellRectangle.fill();
                 break;
             default:
+                cellRectangle = null;
                 break;
         }
 
+        return cellRectangle;
 
     }
 
-    private void drawPlayer(int col, int row) {
 
-        player = new Picture(col +5, row+5, "robin.png");
+    private void drawMaze() {
 
-        player.grow(-5,-5);
+        int distance;
+
+        for (int i = 0; i < mazeLayout.length; i++) {
+            for (int j = 0; j < mazeLayout[0].length; j++) {
+
+                distance = (int)(Math.sqrt((player.getX()/cellSize - i)*(player.getX()/cellSize - i) + (player.getY()/cellSize - j)*(player.getY()/cellSize - j)));
+
+                if(distance < viewRadius) {
+                    mazeLayout[i][j].getCellGfx().fill();
+                } else {
+                    mazeLayout[i][j].getCellGfx().delete();
+                }
+            }
+        }
+
+    }
+
+
+    private void drawPlayer() {
+
+
 
         player.draw();
 
@@ -98,6 +132,9 @@ public class MazeGfx {
     public void movePlayer (int col, int row) {
 
         player.translate((double)(col*cellSize),(double)(row * cellSize));
+        player.delete();
+        drawMaze();
+        player.draw();
     }
 
 
@@ -117,6 +154,7 @@ public class MazeGfx {
 
 
     }
+
 
 
 }

@@ -68,53 +68,29 @@ public class Player implements KeyboardHandler {
 
         switch (key) {
             case KeyboardEvent.KEY_W:
-                while(movementDetector.checkMove(Directions.UP)) {
+                if(movementDetector.checkMove(Directions.UP)) {
                     pos.changePosition(0,-1);
                     mazeGfx.movePlayer(0, -1);
-                    try {
-                        Thread.sleep(mazeGfx.getPlayerDelay());
-                        // MOVE UP
-                    } catch (InterruptedException ex) {
-                        System.out.println("");
-                    }
                 }
                 break;
             case KeyboardEvent.KEY_D:
-                while(movementDetector.checkMove(Directions.RIGHT)) {
+                if(movementDetector.checkMove(Directions.RIGHT)) {
                     pos.changePosition(1,0);
                     mazeGfx.movePlayer(1, 0);
-                    try {
-                        Thread.sleep(mazeGfx.getPlayerDelay());
-                        // MOVE UP
-                    } catch (InterruptedException ex) {
-                        System.out.println("");
-                    }
                 }
                 break;
             case KeyboardEvent.KEY_S:
-                while (movementDetector.checkMove(Directions.DOWN)) {
+                if (movementDetector.checkMove(Directions.DOWN)) {
                     pos.changePosition(0,1);
                     mazeGfx.movePlayer(0,1);
                     // MOVE DOWN
-                    try {
-                        Thread.sleep(mazeGfx.getPlayerDelay());
-                        // MOVE UP
-                    } catch (InterruptedException ex) {
-                        System.out.println("");
-                    }
                 }
                 break;
             case KeyboardEvent.KEY_A:
-                while (movementDetector.checkMove(Directions.LEFT)) {
+                if (movementDetector.checkMove(Directions.LEFT)) {
                     pos.changePosition(-1,0);
                     mazeGfx.movePlayer(-1,0);
                     // MOVE LEFT
-                     try {
-                        Thread.sleep(mazeGfx.getPlayerDelay());
-                        // MOVE UP
-                    } catch (InterruptedException ex) {
-                        System.out.println("");
-                    }
                 }
                 break;
             default:
@@ -146,12 +122,13 @@ public class Player implements KeyboardHandler {
 
 
 
-    /*
+
 
 
     public Position getPos() {
         return pos;
     }
+
 
 
     //useFlash method
@@ -234,7 +211,7 @@ public class Player implements KeyboardHandler {
         }
     }
 
-    //decreaseSpeed methpd
+    //decreaseSpeed method
     public void decreaseSpeed(int extra) {
         speed = speed - extra;
         if (speed <= minSpeed) {
@@ -251,5 +228,5 @@ public class Player implements KeyboardHandler {
     public void pickUpBooster() {
         speedBooster.increaseCharges();
     }
-    */
+
 }
