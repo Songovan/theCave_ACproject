@@ -146,7 +146,7 @@ public class Player implements KeyboardHandler {
 
 
 
-
+    /*
 
 
     public Position getPos() {
@@ -251,4 +251,5 @@ public class Player implements KeyboardHandler {
     public void pickUpBooster() {
         speedBooster.increaseCharges();
     }
+    */
 }

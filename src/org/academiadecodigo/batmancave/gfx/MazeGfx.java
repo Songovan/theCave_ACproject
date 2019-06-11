@@ -74,7 +74,7 @@ public class MazeGfx {
 
     }
 
-    public void drawPlayer(int col, int row) {
+    private void drawPlayer(int col, int row) {
 
         player = new Picture(col +5, row+5, "robin.png");
 
@@ -99,7 +99,6 @@ public class MazeGfx {
     public void movePlayer (int col, int row) {
 
         player.translate((double)(col*cellSize),(double)(row * cellSize));
-        player.draw();
     }
 
 
