@@ -1,10 +1,15 @@
 package org.academiadecodigo.batmancave.maze;
 
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+
+import java.awt.*;
+
 public class Cell {
 
     private CellType type;
     private int[] position;
     private boolean excavated;
+    private Rectangle cellGfx;
 
 
     public Cell(CellType type) {
@@ -32,6 +37,14 @@ public class Cell {
 
     public void setType(CellType type) {
         this.type = type;
+    }
+
+    public void setCellGfx(Rectangle cellGfx) {
+        this.cellGfx = cellGfx;
+    }
+
+    public Rectangle getCellGfx() {
+        return cellGfx;
     }
 
     public void excavate() {

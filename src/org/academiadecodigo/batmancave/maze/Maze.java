@@ -104,7 +104,7 @@ public class Maze {
 
             }
 
-            //System.out.println(line);
+            System.out.println(line);
 
         }
 
