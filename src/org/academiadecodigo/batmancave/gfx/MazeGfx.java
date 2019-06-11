@@ -1,6 +1,5 @@
 package org.academiadecodigo.batmancave.gfx;
 
-import javafx.scene.shape.Circle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -20,7 +19,7 @@ public class MazeGfx {
         return playerDelay;
     }
 
-    private int playerDelay = 100;
+    private int playerDelay = 50;
 
     public MazeGfx(Maze maze) {
         this.maze = maze;
