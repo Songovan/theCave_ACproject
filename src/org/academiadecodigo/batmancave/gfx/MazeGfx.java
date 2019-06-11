@@ -12,7 +12,8 @@ public class MazeGfx {
     private Cell[][] mazeLayout;
     private final int PADDING = 10;
     private int cellSize;
-    private Picture player;
+    private Picture player1;
+    private Picture player2;
     private Picture ghost;
     private int viewRadius;
 
@@ -43,9 +44,13 @@ public class MazeGfx {
             }
         }
 
-        player = new Picture( 5, cellSize + 5, "robin.png");
+        player1 = new Picture( 5, cellSize + 5, "robin.png");
 
-        player.grow(-5,-5);
+        player1.grow(-5,-5);
+
+        player2 = new Picture( mazeLayout.length * cellSize - 5, mazeLayout[0].length+5, "robin.png");
+
+        player2.grow(-5,-5);
 
         //DRAW MAZE AROUND PLAYER
         drawMaze();
@@ -96,7 +101,9 @@ public class MazeGfx {
         for (int i = 0; i < mazeLayout.length; i++) {
             for (int j = 0; j < mazeLayout[0].length; j++) {
 
-                distance = (int)(Math.sqrt((player.getX()/cellSize - i)*(player.getX()/cellSize - i) + (player.getY()/cellSize - j)*(player.getY()/cellSize - j)));
+                distance = (int)(Math.sqrt((player1.getX()/cellSize - i)*(player1.getX()/cellSize - i) + (player1.getY()/cellSize - j)*(player1.getY()/cellSize - j)));
+
+                distance = (int)(Math.sqrt((player2.getX()/cellSize - i)*(player2.getX()/cellSize - i) + (player2.getY()/cellSize - j)*(player2.getY()/cellSize - j)));
 
                 if(distance < viewRadius) {
                     mazeLayout[i][j].getCellGfx().fill();
@@ -113,7 +120,9 @@ public class MazeGfx {
 
 
 
-        player.draw();
+        player1.draw();
+
+        player2.draw();
 
     }
 
@@ -131,10 +140,10 @@ public class MazeGfx {
 
     public void movePlayer (int col, int row) {
 
-        player.translate((double)(col*cellSize),(double)(row * cellSize));
-        player.delete();
+        player1.translate((double)(col*cellSize),(double)(row * cellSize));
+        player1.delete();
         drawMaze();
-        player.draw();
+        player1.draw();
     }
 
 
