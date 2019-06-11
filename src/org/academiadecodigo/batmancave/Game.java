@@ -22,7 +22,7 @@ public class Game {
     private int gameLevel;
 
     public Game() {
-        maze = new Maze(61, 41);
+        maze = new Maze(41, 31);
         mazeGfx = new MazeGfx(maze);
         gameLevel = 1;
 
@@ -38,13 +38,13 @@ public class Game {
 
         mazeGfx.init();
 
-        playerOne = new PlayerOne();
+        playerOne = new PlayerOne(0,1);
 
-        playerTwo = new PlayerTwo();
+        playerTwo = new PlayerTwo(maze.getLayout().length-1, maze.getLayout()[0].length-2);
 
         ghost = new Ghost();
 
-        movementDetector = new MovementDetector(maze, playerOne, ghost);
+        movementDetector = new MovementDetector(maze, ghost);
 
         playerOne.setMovementDetector(movementDetector);
 
@@ -54,8 +54,6 @@ public class Game {
 
         ghost.setMazeGfx(mazeGfx);
 
-        movementDetector = new MovementDetector(maze, playerTwo, ghost);
-
         playerTwo.setMovementDetector(movementDetector);
 
         playerTwo.setMazeGfx(mazeGfx);
@@ -64,7 +62,7 @@ public class Game {
 
     public void start() {
         playerOne.walk();
-        playerTwo.walk();;
+        playerTwo.walk();
 
         while(true) {
 

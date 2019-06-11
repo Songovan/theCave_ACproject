@@ -27,8 +27,8 @@ public abstract class Player implements KeyboardHandler {
     protected MovementDetector movementDetector;
     protected MazeGfx mazeGfx;
 
-    public Player() {
-        pos = new Position(0, 1);
+    public Player(int col, int row) {
+        pos = new Position(col, row);
     }
 
     //walk method

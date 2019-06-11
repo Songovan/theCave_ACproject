@@ -8,6 +8,9 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class PlayerOne extends Player implements KeyboardHandler {
 
+    public PlayerOne(int col, int row) {
+        super(col, row);
+    }
 
     @Override
     public void walk() {
@@ -47,26 +50,26 @@ public class PlayerOne extends Player implements KeyboardHandler {
 
         switch (key) {
             case KeyboardEvent.KEY_W:
-                if (movementDetector.checkMove(Directions.UP)) {
+                if (movementDetector.checkMove(Directions.UP, this)) {
                     pos.changePosition(0, -1);
                     mazeGfx.movePlayerOne(0, -1);
                 }
                 break;
             case KeyboardEvent.KEY_D:
-                if (movementDetector.checkMove(Directions.RIGHT)) {
+                if (movementDetector.checkMove(Directions.RIGHT, this)) {
                     pos.changePosition(1, 0);
                     mazeGfx.movePlayerOne(1, 0);
                 }
                 break;
             case KeyboardEvent.KEY_S:
-                if (movementDetector.checkMove(Directions.DOWN)) {
+                if (movementDetector.checkMove(Directions.DOWN, this)) {
                     pos.changePosition(0, 1);
                     mazeGfx.movePlayerOne(0, 1);
                     // MOVE DOWN
                 }
                 break;
             case KeyboardEvent.KEY_A:
-                if (movementDetector.checkMove(Directions.LEFT)) {
+                if (movementDetector.checkMove(Directions.LEFT, this)) {
                     pos.changePosition(-1, 0);
                     mazeGfx.movePlayerOne(-1, 0);
                     // MOVE LEFT

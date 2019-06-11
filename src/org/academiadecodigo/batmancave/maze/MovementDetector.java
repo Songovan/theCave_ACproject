@@ -1,21 +1,19 @@
 package org.academiadecodigo.batmancave.maze;
 
-import org.academiadecodigo.batmancave.Player.Player;
+import org.academiadecodigo.batmancave.Player.*;
 import org.academiadecodigo.batmancave.gameobjects.enemies.Ghost;
 
 public class MovementDetector {
 
     private Maze maze;
-    private Player player;
     private Ghost ghost;
 
-    public MovementDetector(Maze maze, Player player, Ghost ghost) {
+    public MovementDetector(Maze maze, Ghost ghost) {
         this.maze = maze;
-        this.player = player;
         this.ghost = ghost;
     }
 
-    public boolean checkMove(Directions direction) {
+    public boolean checkMove(Directions direction, Player player) {
 
         int currentCol = player.getPos().getCol();
         int currentRow = player.getPos().getRow();

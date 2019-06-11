@@ -1,6 +1,7 @@
 package org.academiadecodigo.batmancave.maze;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.awt.*;
 
@@ -9,7 +10,7 @@ public class Cell {
     private CellType type;
     private int[] position;
     private boolean excavated;
-    private Rectangle cellGfx;
+    private Picture cellGfx;
 
 
     public Cell(CellType type) {
@@ -39,11 +40,11 @@ public class Cell {
         this.type = type;
     }
 
-    public void setCellGfx(Rectangle cellGfx) {
+    public void setCellGfx(Picture cellGfx) {
         this.cellGfx = cellGfx;
     }
 
-    public Rectangle getCellGfx() {
+    public Picture getCellGfx() {
         return cellGfx;
     }
 

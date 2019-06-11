@@ -63,33 +63,56 @@ public class MazeGfx {
 
 
 
-    private Rectangle assignCell(int col, int row) {
+    private Picture assignCell(int col, int row) {
 
         CellType cell = mazeLayout[col][row].getType();
+
+        Picture cellTexture;
 
         Rectangle cellRectangle;
 
         switch (cell) {
             case WALL:
+
+                if(row == mazeLayout[0].length - 1) {
+                    // Bottom line
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "bottom_wall.png");
+                } else if (mazeLayout[col][row+1].getType() == CellType.ROOM) {
+                    // Wall with room below
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "bottom_wall.png");
+                } else {
+                    // regular wall
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "wall.png");
+
+                }
+
+                /*
                 cellRectangle = new Rectangle(col*cellSize + PADDING, row*cellSize + PADDING, cellSize, cellSize);
                 if(col == 0 && row == 1 || col == mazeLayout.length - 1 && row == mazeLayout[0].length - 2) {
                     cellRectangle.setColor(Color.BLUE);
                 } else {
                     cellRectangle.setColor(Color.DARK_GRAY);
                 }
+
+                 */
                 //cellRectangle.fill();
                 break;
             case ROOM:
+                cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "room.png");
+
+                /*
                 cellRectangle = new Rectangle(col*cellSize + PADDING, row*cellSize + PADDING, cellSize, cellSize);
                 cellRectangle.setColor(Color.LIGHT_GRAY);
+                 */
                 //cellRectangle.fill();
                 break;
             default:
+                cellTexture = null;
                 cellRectangle = null;
                 break;
         }
 
-        return cellRectangle;
+        return cellTexture;
 
     }
 
@@ -107,7 +130,7 @@ public class MazeGfx {
                 distanceTwo = (int)(Math.sqrt((playerTwo.getX()/cellSize - i)*(playerTwo.getX()/cellSize - i) + (playerTwo.getY()/cellSize - j)*(playerTwo.getY()/cellSize - j)));
 
                 if(distanceOne < viewRadius || distanceTwo < viewRadius) {
-                    mazeLayout[i][j].getCellGfx().fill();
+                    mazeLayout[i][j].getCellGfx().draw();
                 } else {
                     mazeLayout[i][j].getCellGfx().delete();
                 }
