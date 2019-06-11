@@ -1,5 +1,8 @@
 package org.academiadecodigo.batmancave;
 
+import org.academiadecodigo.batmancave.Player.Player;
+import org.academiadecodigo.batmancave.Player.PlayerOne;
+import org.academiadecodigo.batmancave.Player.PlayerTwo;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
 import org.academiadecodigo.batmancave.maze.Maze;
 import org.academiadecodigo.batmancave.maze.MovementDetector;
@@ -13,7 +16,8 @@ public class Game {
     private Maze maze;
     private MazeGfx mazeGfx;
     private MovementDetector movementDetector;
-    private Player player;
+    private PlayerOne playerOne;
+    private PlayerTwo playerTwo;
     private Ghost ghost;
     private int gameLevel;
 
@@ -34,24 +38,33 @@ public class Game {
 
         mazeGfx.init();
 
-        player = new Player();
+        playerOne = new PlayerOne();
+
+        playerTwo = new PlayerTwo();
 
         ghost = new Ghost();
 
-        movementDetector = new MovementDetector(maze, player, ghost);
+        movementDetector = new MovementDetector(maze, playerOne, ghost);
 
-        player.setMovementDetector(movementDetector);
+        playerOne.setMovementDetector(movementDetector);
 
-        player.setMazeGfx(mazeGfx);
+        playerOne.setMazeGfx(mazeGfx);
 
         ghost.setMovementDetector(movementDetector);
 
         ghost.setMazeGfx(mazeGfx);
 
+        movementDetector = new MovementDetector(maze, playerTwo, ghost);
+
+        playerTwo.setMovementDetector(movementDetector);
+
+        playerTwo.setMazeGfx(mazeGfx);
+
     }
 
     public void start() {
-        player.walk();
+        playerOne.walk();
+        playerTwo.walk();;
 
         while(true) {
 

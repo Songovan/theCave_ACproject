@@ -1,5 +1,6 @@
-package org.academiadecodigo.batmancave;
+package org.academiadecodigo.batmancave.Player;
 
+import org.academiadecodigo.batmancave.Position;
 import org.academiadecodigo.batmancave.gameobjects.Usables.Flashlight;
 import org.academiadecodigo.batmancave.gameobjects.Usables.SpeedBooster;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
@@ -10,94 +11,31 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-public class Player implements KeyboardHandler {
+public abstract class Player implements KeyboardHandler {
 
     //properties
     private int minHp = 5;
     private int hp = minHp;
     private int maxHp = 10;
     private boolean dead;
-    private Position pos;
+    protected Position pos;
     private int minSpeed = 4;
     private int speed = minSpeed;
     private int maxSpeed = 10;
     private Flashlight flashlight;
     private SpeedBooster speedBooster = new SpeedBooster();
-    private MovementDetector movementDetector;
-    private MazeGfx mazeGfx;
+    protected MovementDetector movementDetector;
+    protected MazeGfx mazeGfx;
 
     public Player() {
         pos = new Position(0, 1);
     }
 
     //walk method
-    public void walk() {
-
-        Keyboard keyboard = new Keyboard(this);
-
-        // setup events
-        KeyboardEvent up = new KeyboardEvent();
-        KeyboardEvent right = new KeyboardEvent();
-        KeyboardEvent down = new KeyboardEvent();
-        KeyboardEvent left = new KeyboardEvent();
-
-        // assign event key
-        up.setKey(KeyboardEvent.KEY_W);
-        right.setKey(KeyboardEvent.KEY_D);
-        down.setKey(KeyboardEvent.KEY_S);
-        left.setKey(KeyboardEvent.KEY_A);
-
-        // set event type
-        up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        // add event listeners
-        keyboard.addEventListener(up);
-        keyboard.addEventListener(right);
-        keyboard.addEventListener(down);
-        keyboard.addEventListener(left);
-
-    }
+    public abstract void walk();
 
     @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-
-        int key = keyboardEvent.getKey();
-
-        switch (key) {
-            case KeyboardEvent.KEY_W:
-                if(movementDetector.checkMove(Directions.UP)) {
-                    pos.changePosition(0,-1);
-                    mazeGfx.movePlayer(0, -1);
-                }
-                break;
-            case KeyboardEvent.KEY_D:
-                if(movementDetector.checkMove(Directions.RIGHT)) {
-                    pos.changePosition(1,0);
-                    mazeGfx.movePlayer(1, 0);
-                }
-                break;
-            case KeyboardEvent.KEY_S:
-                if (movementDetector.checkMove(Directions.DOWN)) {
-                    pos.changePosition(0,1);
-                    mazeGfx.movePlayer(0,1);
-                    // MOVE DOWN
-                }
-                break;
-            case KeyboardEvent.KEY_A:
-                if (movementDetector.checkMove(Directions.LEFT)) {
-                    pos.changePosition(-1,0);
-                    mazeGfx.movePlayer(-1,0);
-                    // MOVE LEFT
-                }
-                break;
-            default:
-                break;
-        }
-
-    }
+    public abstract void keyPressed(KeyboardEvent keyboardEvent);
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {

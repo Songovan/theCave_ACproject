@@ -1,6 +1,6 @@
 package org.academiadecodigo.batmancave.maze;
 
-import org.academiadecodigo.batmancave.Player;
+import org.academiadecodigo.batmancave.Player.Player;
 import org.academiadecodigo.batmancave.gameobjects.enemies.Ghost;
 
 public class MovementDetector {

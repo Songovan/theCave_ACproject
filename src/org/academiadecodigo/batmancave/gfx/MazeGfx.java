@@ -12,8 +12,8 @@ public class MazeGfx {
     private Cell[][] mazeLayout;
     private final int PADDING = 10;
     private int cellSize;
-    private Picture player1;
-    private Picture player2;
+    private Picture playerOne;
+    private Picture playerTwo;
     private Picture ghost;
     private int viewRadius;
 
@@ -44,13 +44,13 @@ public class MazeGfx {
             }
         }
 
-        player1 = new Picture( 5, cellSize + 5, "robin.png");
+        playerOne = new Picture( 5, cellSize + 5, "robin.png");
 
-        player1.grow(-5,-5);
+        playerOne.grow(-5,-5);
 
-        player2 = new Picture( mazeLayout.length * cellSize - 5, mazeLayout[0].length+5, "robin.png");
+        playerTwo = new Picture( (mazeLayout.length-1) * cellSize + 5, (mazeLayout[0].length - 2) * cellSize, "robin.png");
 
-        player2.grow(-5,-5);
+        playerTwo.grow(-5,-5);
 
         //DRAW MAZE AROUND PLAYER
         drawMaze();
@@ -96,16 +96,17 @@ public class MazeGfx {
 
     private void drawMaze() {
 
-        int distance;
+        int distanceOne;
+        int distanceTwo;
 
         for (int i = 0; i < mazeLayout.length; i++) {
             for (int j = 0; j < mazeLayout[0].length; j++) {
 
-                distance = (int)(Math.sqrt((player1.getX()/cellSize - i)*(player1.getX()/cellSize - i) + (player1.getY()/cellSize - j)*(player1.getY()/cellSize - j)));
+                distanceOne = (int)(Math.sqrt((playerOne.getX()/cellSize - i)*(playerOne.getX()/cellSize - i) + (playerOne.getY()/cellSize - j)*(playerOne.getY()/cellSize - j)));
 
-                distance = (int)(Math.sqrt((player2.getX()/cellSize - i)*(player2.getX()/cellSize - i) + (player2.getY()/cellSize - j)*(player2.getY()/cellSize - j)));
+                distanceTwo = (int)(Math.sqrt((playerTwo.getX()/cellSize - i)*(playerTwo.getX()/cellSize - i) + (playerTwo.getY()/cellSize - j)*(playerTwo.getY()/cellSize - j)));
 
-                if(distance < viewRadius) {
+                if(distanceOne < viewRadius || distanceTwo < viewRadius) {
                     mazeLayout[i][j].getCellGfx().fill();
                 } else {
                     mazeLayout[i][j].getCellGfx().delete();
@@ -120,9 +121,9 @@ public class MazeGfx {
 
 
 
-        player1.draw();
+        playerOne.draw();
 
-        player2.draw();
+        playerTwo.draw();
 
     }
 
@@ -138,12 +139,20 @@ public class MazeGfx {
 
     }
 
-    public void movePlayer (int col, int row) {
+    public void movePlayerOne (int col, int row) {
 
-        player1.translate((double)(col*cellSize),(double)(row * cellSize));
-        player1.delete();
+        playerOne.translate((double)(col*cellSize),(double)(row * cellSize));
+        playerOne.delete();
         drawMaze();
-        player1.draw();
+        playerOne.draw();
+    }
+
+    public void movePlayerTwo (int col, int row) {
+
+        playerTwo.translate((double)(col*cellSize),(double)(row * cellSize));
+        playerTwo.delete();
+        drawMaze();
+        playerTwo.draw();
     }
 
 

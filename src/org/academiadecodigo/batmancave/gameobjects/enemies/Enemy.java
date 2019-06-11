@@ -1,6 +1,6 @@
 package org.academiadecodigo.batmancave.gameobjects.enemies;
 
-import org.academiadecodigo.batmancave.Player;
+import org.academiadecodigo.batmancave.Player.Player;
 import org.academiadecodigo.batmancave.gameobjects.GameObject;
 
 public abstract class Enemy extends GameObject {

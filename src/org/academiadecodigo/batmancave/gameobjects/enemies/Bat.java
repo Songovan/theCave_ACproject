@@ -1,7 +1,6 @@
 package org.academiadecodigo.batmancave.gameobjects.enemies;
 
-import org.academiadecodigo.batmancave.Game;
-import org.academiadecodigo.batmancave.Player;
+import org.academiadecodigo.batmancave.Player.Player;
 
 public class Bat extends Enemy implements Defeatable{
 
