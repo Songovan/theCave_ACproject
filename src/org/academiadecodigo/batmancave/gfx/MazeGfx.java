@@ -44,7 +44,7 @@ public class MazeGfx {
             }
         }
 
-        playerOne = new Picture( 5, cellSize + 5, "robin.png");
+        playerOne = new Picture( 5, cellSize , "robin.png");
 
         playerOne.grow(-5,-5);
 
