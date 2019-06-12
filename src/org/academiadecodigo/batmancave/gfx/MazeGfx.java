@@ -8,23 +8,16 @@ import org.academiadecodigo.batmancave.maze.*;
 public class MazeGfx {
 
     private Rectangle window;
-    private Maze maze;
     private Cell[][] mazeLayout;
     private final int PADDING = 10;
     private int cellSize;
     private Picture playerOne;
     private Picture playerTwo;
     private Picture ghost;
+    private Picture flag;
     private int viewRadius;
 
-    public int getPlayerDelay() {
-        return playerDelay;
-    }
-
-    private int playerDelay = 50;
-
     public MazeGfx(Maze maze) {
-        this.maze = maze;
         cellSize = 20;
         mazeLayout = maze.getLayout();
         window = new Rectangle(PADDING, PADDING, mazeLayout.length * cellSize, mazeLayout[0].length * cellSize);
@@ -52,6 +45,8 @@ public class MazeGfx {
 
         playerTwo.grow(-5,-5);
 
+        flag = new Picture(Math.ceil(21*cellSize + PADDING), Math.ceil(15) * cellSize + PADDING, "flag.png");
+
         //DRAW MAZE AROUND PLAYER
         drawMaze();
         drawPlayer();
@@ -69,8 +64,6 @@ public class MazeGfx {
 
         Picture cellTexture;
 
-        Rectangle cellRectangle;
-
         switch (cell) {
             case WALL:
 
@@ -83,32 +76,13 @@ public class MazeGfx {
                 } else {
                     // regular wall
                     cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "wall.png");
-
                 }
-
-                /*
-                cellRectangle = new Rectangle(col*cellSize + PADDING, row*cellSize + PADDING, cellSize, cellSize);
-                if(col == 0 && row == 1 || col == mazeLayout.length - 1 && row == mazeLayout[0].length - 2) {
-                    cellRectangle.setColor(Color.BLUE);
-                } else {
-                    cellRectangle.setColor(Color.DARK_GRAY);
-                }
-
-                 */
-                //cellRectangle.fill();
                 break;
             case ROOM:
                 cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "room.png");
-
-                /*
-                cellRectangle = new Rectangle(col*cellSize + PADDING, row*cellSize + PADDING, cellSize, cellSize);
-                cellRectangle.setColor(Color.LIGHT_GRAY);
-                 */
-                //cellRectangle.fill();
                 break;
             default:
                 cellTexture = null;
-                cellRectangle = null;
                 break;
         }
 
@@ -137,6 +111,23 @@ public class MazeGfx {
             }
         }
 
+        drawFlag();
+    }
+
+    private void drawFlag() {
+
+        int distanceOne;
+        int distanceTwo;
+
+        distanceOne = (int)(Math.sqrt((playerOne.getX() - flag.getX())*(playerOne.getX() - flag.getX()) + (playerOne.getY() - flag.getY())*(playerOne.getY() - flag.getY())))/cellSize;
+
+        distanceTwo = (int)(Math.sqrt((playerTwo.getX() - flag.getX())*(playerTwo.getX() - flag.getX()) + (playerTwo.getY() - flag.getY())*(playerTwo.getY() - flag.getY())))/cellSize;
+
+        if(distanceOne < viewRadius || distanceTwo < viewRadius) {
+            flag.draw();
+        } else {
+            flag.delete();
+        }
     }
 
 
@@ -192,10 +183,11 @@ public class MazeGfx {
         } else {
             return randomPos();
         }
-
-
     }
 
 
+    public void moveFlag(int col, int row) {
+        flag.translate((double)(col*cellSize), (double)(row*cellSize));
+    }
 
 }

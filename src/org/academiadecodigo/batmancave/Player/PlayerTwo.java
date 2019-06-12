@@ -78,5 +78,7 @@ public class PlayerTwo extends Player implements KeyboardHandler {
             default:
                 break;
         }
+
+        super.setFlag(movementDetector.checkFlag(pos));
     }
 }

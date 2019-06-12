@@ -6,7 +6,9 @@ import org.academiadecodigo.batmancave.Player.PlayerTwo;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
 import org.academiadecodigo.batmancave.maze.Maze;
 import org.academiadecodigo.batmancave.maze.MovementDetector;
+import org.academiadecodigo.batmancave.gameobjects.Usables.*;
 import org.academiadecodigo.batmancave.gameobjects.enemies.Ghost;
+
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -19,6 +21,7 @@ public class Game {
     private PlayerOne playerOne;
     private PlayerTwo playerTwo;
     private Ghost ghost;
+    private Flag flag;
     private int gameLevel;
 
     public Game() {
@@ -38,13 +41,17 @@ public class Game {
 
         mazeGfx.init();
 
+        flag = new Flag(21,15);
+
+        flag.setMazeGfx(mazeGfx);
+
         playerOne = new PlayerOne(0,1);
 
         playerTwo = new PlayerTwo(maze.getLayout().length-1, maze.getLayout()[0].length-2);
 
         ghost = new Ghost();
 
-        movementDetector = new MovementDetector(maze, ghost);
+        movementDetector = new MovementDetector(maze, flag);
 
         playerOne.setMovementDetector(movementDetector);
 
@@ -57,6 +64,8 @@ public class Game {
         playerTwo.setMovementDetector(movementDetector);
 
         playerTwo.setMazeGfx(mazeGfx);
+
+
 
     }
 

@@ -1,8 +1,7 @@
 package org.academiadecodigo.batmancave.Player;
 
 import org.academiadecodigo.batmancave.Position;
-import org.academiadecodigo.batmancave.gameobjects.Usables.Flashlight;
-import org.academiadecodigo.batmancave.gameobjects.Usables.SpeedBooster;
+import org.academiadecodigo.batmancave.gameobjects.Usables.*;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
 import org.academiadecodigo.batmancave.maze.Directions;
 import org.academiadecodigo.batmancave.maze.MovementDetector;
@@ -26,6 +25,7 @@ public abstract class Player implements KeyboardHandler {
     private SpeedBooster speedBooster = new SpeedBooster();
     protected MovementDetector movementDetector;
     protected MazeGfx mazeGfx;
+    private Flag flag;
 
     public Player(int col, int row) {
         pos = new Position(col, row);
@@ -48,6 +48,17 @@ public abstract class Player implements KeyboardHandler {
 
     }
 
+    public void moveFlag(Player player) {
+
+        Flag playerFlag = player.getFlag();
+
+        if (playerFlag != null) {
+            System.out.println("moving flag from player");
+            playerFlag.moveFlag(player.getPos().getCol()-playerFlag.getPos().getCol(), player.getPos().getRow()-playerFlag.getPos().getRow());
+        }
+
+    }
+
 
     public void setMovementDetector(MovementDetector movementDetector) {
         this.movementDetector = movementDetector;
@@ -58,10 +69,13 @@ public abstract class Player implements KeyboardHandler {
     }
 
 
+    public void setFlag(Flag flag) {
+        this.flag = flag;
+    }
 
-
-
-
+    public Flag getFlag() {
+        return flag;
+    }
 
     public Position getPos() {
         return pos;
