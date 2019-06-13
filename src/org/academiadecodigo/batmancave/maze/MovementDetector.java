@@ -53,16 +53,37 @@ public class MovementDetector {
 
     }
 
-    public Flag checkFlag(Position pos) {
+    public boolean checkFlag(Position pos) {
 
-        System.out.println("Flag at: " + flag.getPos().getCol() + ", " + flag.getPos().getRow());
-        System.out.println("Player at: " + pos.getCol() + ", " + pos.getRow());
+        //System.out.println("Flag at: " + flag.getPos().getCol() + ", " + flag.getPos().getRow());
+        //System.out.println("Player at: " + pos.getCol() + ", " + pos.getRow());
 
         if(pos.getCol() == flag.getPos().getCol() && pos.getRow() == flag.getPos().getRow()) {
-            return flag;
+            flag.setPos(pos);
+            return true;
         } else {
-            return null;
+            return false;
         }
+
+    }
+
+    public boolean roundEnd(Player[] players) {
+
+        if(players[0].getHasFlag() &&
+            players[0].getPos().getCol() == 1 &&
+            players[0].getPos().getRow() == 1) {
+            // Player 1 wins the round
+            return true;
+        }
+
+        if(players[1].getHasFlag() &&
+            players[1].getPos().getCol() == (maze.getLayout().length - 2) &&
+            players[1].getPos().getRow() == (maze.getLayout()[0].length - 2)) {
+            // Player 2 wins the round
+            return true;
+        }
+
+        return false;
 
     }
 

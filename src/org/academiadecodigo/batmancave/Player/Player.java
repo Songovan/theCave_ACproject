@@ -13,22 +13,14 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public abstract class Player implements KeyboardHandler {
 
     //properties
-    private int minHp = 5;
-    private int hp = minHp;
-    private int maxHp = 10;
-    private boolean dead;
     protected Position pos;
-    private int minSpeed = 4;
-    private int speed = minSpeed;
-    private int maxSpeed = 10;
-    private Flashlight flashlight;
-    private SpeedBooster speedBooster = new SpeedBooster();
     protected MovementDetector movementDetector;
     protected MazeGfx mazeGfx;
-    private Flag flag;
+    private boolean hasFlag;
 
     public Player(int col, int row) {
         pos = new Position(col, row);
+        hasFlag = false;
     }
 
     //walk method
@@ -45,20 +37,16 @@ public abstract class Player implements KeyboardHandler {
         switch (key) {
 
         }
-
     }
 
-    public void moveFlag(Player player) {
 
-        Flag playerFlag = player.getFlag();
-
-        if (playerFlag != null) {
-            System.out.println("moving flag from player");
-            playerFlag.moveFlag(player.getPos().getCol()-playerFlag.getPos().getCol(), player.getPos().getRow()-playerFlag.getPos().getRow());
-        }
-
+    public void setHasFlag(boolean hasFlag) {
+        this.hasFlag = hasFlag;
     }
 
+    public boolean getHasFlag() {
+        return hasFlag;
+    }
 
     public void setMovementDetector(MovementDetector movementDetector) {
         this.movementDetector = movementDetector;
@@ -68,117 +56,12 @@ public abstract class Player implements KeyboardHandler {
         this.mazeGfx = mazeGfx;
     }
 
-
-    public void setFlag(Flag flag) {
-        this.flag = flag;
-    }
-
-    public Flag getFlag() {
-        return flag;
-    }
-
     public Position getPos() {
         return pos;
     }
 
-
-
-    //useFlash method
-    public void useFlash(Flashlight flashlight) {
-        if (flashlight.isPossessed()) {
-            flashlight.lightUp();
-        } else {
-            System.out.println("You don't have a Flashlight!");
-        }
+    public void reset() {
+        pos.resetPos();
+        hasFlag = false;
     }
-
-    //useSpeed method
-    public void useSpeed(SpeedBooster speedBooster) {
-        if (speedBooster.getCharges() > 0) {
-            speedBooster.boostUp();
-            increaseSpeed(speedBooster.getSpeed());
-            //walk a few steps
-            //setSpeed(minSpeed);
-        } else {
-            System.out.println("You're out of Speed Boosters!");
-        }
-    }
-
-    //pickFlash
-    public void pickFlash () {
-        if (flashlight == null) {
-            flashlight = new Flashlight();
-            flashlight.getMessage();
-        } else {
-            System.out.println("You already have a Flashlight!");
-        }
-    }
-
-    //getHp method
-    public int getHp() {
-        return hp;
-    }
-
-    //setHp method
-    public void decreaseHp(int extra) {
-        hp = hp - extra;
-        if (hp <= minHp) {
-            dead = true;
-        }
-    }
-
-    //increaseHp method
-    public void increaseHp(int extra) {
-        hp = hp + extra;
-        if (hp >= maxHp) {
-            hp = maxHp;
-        }
-    }
-
-    //isDead method
-    public boolean isDead() {
-        return dead;
-    }
-
-    //die method
-    public void die() {
-        dead = true;
-    }
-
-    //getSpeed method
-    public int getSpeed() {
-        return speed;
-    }
-
-    //setSpeed method
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    //increaseSpeed method
-    public void increaseSpeed(int extra) {
-        speed = speed + extra;
-        if (speed >= maxSpeed) {
-            speed = maxSpeed;
-        }
-    }
-
-    //decreaseSpeed method
-    public void decreaseSpeed(int extra) {
-        speed = speed - extra;
-        if (speed <= minSpeed) {
-            speed = minSpeed;
-        }
-    }
-
-    //hasFlashlight method
-    public boolean hasFlashlight() {
-        return flashlight.isPossessed();
-    }
-
-    //pickUpBooster method
-    public void pickUpBooster() {
-        speedBooster.increaseCharges();
-    }
-
 }
