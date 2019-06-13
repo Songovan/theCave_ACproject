@@ -10,6 +10,7 @@ public class Flag {
     private Position pos;
     private MazeGfx mazeGfx;
 
+    //TODO set random start position middle vs corners
     public Flag(int startCol, int startRow) {
         pos = new Position(startCol, startRow);
     }

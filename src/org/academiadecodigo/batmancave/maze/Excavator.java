@@ -18,17 +18,10 @@ public class Excavator {
     }
 
 
-
-    public int[] move() {
-
-        // Get current position stored in stack
+    private Directions getDirectionToMove(boolean[] availableRooms) {
 
         int col = ((int[])stack.get(stack.size()-1))[0];
         int row = ((int[])stack.get(stack.size()-1))[1];
-
-        layout[col][row].excavate();
-
-        boolean[] availableRooms = {false, false, false, false}; // UP - RIGHT - DOWN - LEFT
 
         // UP
         if(row - 2 > 0 &&
@@ -58,8 +51,23 @@ public class Excavator {
             availableRooms[3] = true; // Room is available
         }
 
+        return RandomRoom.randomRoom(availableRooms);
+    }
 
-        Directions move = RandomRoom.randomRoom(availableRooms);//randomRoom(availableRooms);
+    public int[] move() {
+
+        // Get current position stored in stack
+
+        int col = ((int[])stack.get(stack.size()-1))[0];
+        int row = ((int[])stack.get(stack.size()-1))[1];
+
+        layout[col][row].excavate();
+
+        // TODO make this a different method because it is not actually moving the position, only checking possibilities
+
+        boolean[] availableRooms = {false, false, false, false}; // UP - RIGHT - DOWN - LEFT
+
+        Directions move = getDirectionToMove(availableRooms);
 
         if (move == null) {
             return noMove;

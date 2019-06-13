@@ -53,12 +53,14 @@ public class PlayerTwo extends Player implements KeyboardHandler {
                 if (movementDetector.checkMove(Directions.UP, this)) {
                     pos.changePosition(0, -1);
                     mazeGfx.movePlayerTwo(0, -1);
+                    super.moveFlag(this);
                 }
                 break;
             case KeyboardEvent.KEY_RIGHT:
                 if (movementDetector.checkMove(Directions.RIGHT, this)) {
                     pos.changePosition(1, 0);
                     mazeGfx.movePlayerTwo(1, 0);
+                    super.moveFlag(this);
                 }
                 break;
             case KeyboardEvent.KEY_DOWN:
@@ -80,5 +82,6 @@ public class PlayerTwo extends Player implements KeyboardHandler {
         }
 
         super.setFlag(movementDetector.checkFlag(pos));
+        System.out.println(super.getFlag());
     }
 }
