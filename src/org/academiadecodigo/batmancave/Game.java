@@ -58,18 +58,21 @@ public class Game {
 
         playerTwo.setMazeGfx(mazeGfx);
 
+        playerOne.walk();
+
+        playerTwo.walk();
+
     }
 
     public void start() {
-        playerOne.walk();
-        playerTwo.walk();
 
-        while(true) {
+
+        /*while(true) {
 
             // Move Ghost
 
             // Make condition to win level and raise level
-        }
+        }*/
     }
 
     public void runSound() {

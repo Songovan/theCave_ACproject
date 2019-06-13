@@ -41,11 +41,12 @@ public class Main {
 
         */
 
-        Game game = new Game();
+        Menu menu = new Menu();
 
-        game.init();
 
-        game.start();
+    //Menu menu = new Menu();
     }
+
+
 
 }
