@@ -178,6 +178,13 @@ public class MazeGfx {
         playerTwo.draw();
     }
 
+    public void moveGhost (int col, int row) {
+        ghost.translate((double) (col*cellSize), (double) (row * cellSize));
+        ghost.delete();
+        drawMaze();
+        ghost.draw();
+    }
+
 
     private int[] randomPos () {
 

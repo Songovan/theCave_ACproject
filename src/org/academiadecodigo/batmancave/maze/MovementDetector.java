@@ -55,6 +55,48 @@ public class MovementDetector {
 
     }
 
+    public boolean checkMove(Directions direction, Ghost ghost) {
+
+        int currentCol = ghost.getPos().getCol();
+        int currentRow = ghost.getPos().getRow();
+
+
+
+        switch (direction) {
+            case UP:
+                //if (maze.getLayout()[currentCol-1][currentRow].getType() == CellType.ROOM || maze.getLayout()[currentCol-1][currentRow].getType() == CellType.ROOM ) {
+                  //  return false;
+                //} else
+                if (maze.getLayout()[currentCol][currentRow - 1].getType() == CellType.ROOM) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case RIGHT:
+                if (maze.getLayout()[currentCol + 1][currentRow].getType() == CellType.ROOM) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case LEFT:
+                if (maze.getLayout()[currentCol - 1][currentRow].getType() == CellType.ROOM) {
+                    return true;
+                } else {
+                    return false;
+                }
+            case DOWN:
+                if (maze.getLayout()[currentCol][currentRow + 1].getType() == CellType.ROOM) {
+                    return true;
+                } else {
+                    return false;
+                }
+            default:
+                return false;
+        }
+
+
+    }
+
 
 
 }
