@@ -59,7 +59,7 @@ public class MovementDetector {
         //System.out.println("Player at: " + pos.getCol() + ", " + pos.getRow());
 
         if(pos.getCol() == flag.getPos().getCol() && pos.getRow() == flag.getPos().getRow()) {
-            flag.setPos(pos);
+            //flag.setPos(pos);
             return true;
         } else {
             return false;
