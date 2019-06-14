@@ -78,5 +78,9 @@ public class PlayerOne extends Player implements KeyboardHandler {
             default:
                 break;
         }
+
+        super.setHasFlag(movementDetector.checkFlag(pos));
+        //System.out.println(super.getHasFlag());
     }
+
 }

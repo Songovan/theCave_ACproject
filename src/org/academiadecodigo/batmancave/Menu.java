@@ -90,6 +90,7 @@ public class Menu implements KeyboardHandler {
                     bg.delete();
                     isGameStart = true;
                 }
+
             } else if (e.getKey() == KeyboardEvent.KEY_ESC){
                 System.exit(0);
             }

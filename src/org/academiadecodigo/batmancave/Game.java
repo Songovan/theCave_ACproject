@@ -6,10 +6,13 @@ import org.academiadecodigo.batmancave.Player.PlayerTwo;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
 import org.academiadecodigo.batmancave.maze.Maze;
 import org.academiadecodigo.batmancave.maze.MovementDetector;
+import org.academiadecodigo.batmancave.gameobjects.Usables.*;
 import org.academiadecodigo.batmancave.gameobjects.enemies.Ghost;
+
 
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 
 public class Game {
 
@@ -19,14 +22,27 @@ public class Game {
     private MovementDetector movementDetector;
     private PlayerOne playerOne;
     private PlayerTwo playerTwo;
+    private Player[] players;
     private Ghost ghost;
-    private int gameLevel;
+    private Flag flag;
+    private boolean roundEnd;
+    private int[] points;
+    private File mainTheme = new File("./resources/atTheEndOfAllThings.wav"); // path to your clip
+    private File escapeSong = new File("./resources/flee-flag.wav"); // path to your clip
+
+
+
+    private AudioInputStream audioStrmObj;
+    private AudioFormat format;
+    private DataLine.Info info;
+    private Clip audioClip;
+
+
 
     public Game() {
         maze = new Maze(41, 31);
         mazeGfx = new MazeGfx(maze);
-        gameLevel = 1;
-
+        points = new int[]{0,0};
     }
 
 
@@ -35,7 +51,15 @@ public class Game {
 
         menu.keyboard();
 
-        runSound();
+        try{
+            playThemeSong();
+        } catch (UnsupportedAudioFileException e1) {
+            System.out.println("NOT");
+        } catch (IOException e2) {
+
+        } catch (LineUnavailableException e3) {
+
+        }
 
         while (!menu.isGameStart()){
             try {
@@ -51,21 +75,29 @@ public class Game {
 
     public void init() {
 
-
-
         maze.init();
 
         maze.generate();
 
         mazeGfx.init();
 
-        playerOne = new PlayerOne(0,1);
+        flag = new Flag(21,15);
 
-        playerTwo = new PlayerTwo(maze.getLayout().length-1, maze.getLayout()[0].length-2);
+        //flag.setMazeGfx(mazeGfx);
+
+        playerOne = new PlayerOne(1,1);
+
+        playerTwo = new PlayerTwo(maze.getLayout().length-2, maze.getLayout()[0].length-2);
+
+        players = new Player[2];
+
+        players[0] = playerOne;
+
+        players[1] = playerTwo;
 
         ghost = new Ghost();
 
-        movementDetector = new MovementDetector(maze, ghost);
+        movementDetector = new MovementDetector(maze, flag);
 
         playerOne.setMovementDetector(movementDetector);
 
@@ -79,53 +111,95 @@ public class Game {
 
         playerTwo.setMazeGfx(mazeGfx);
 
-
-        start();
-
-
-
-    }
-
-    public void start() {
+        mazeGfx.setPlayers(players);
 
         playerOne.walk();
 
         playerTwo.walk();
 
-        while(true) {
+        try{
+            start();
+        } catch (InterruptedException e) {
 
+        }
+
+
+    }
+
+    public void start() throws InterruptedException {
+
+        while (!roundEnd) {
+
+
+            Thread.sleep(50);
             // Move Ghost
-
             // Make condition to win level and raise level
+
+            roundEnd = movementDetector.roundEnd(players);
+
         }
-    }
 
-    public void runSound() {
-        try {
-
-            File clipFile = new File("./resources/atTheEndOfAllThings.wav"); // path to your clip
-            AudioInputStream audioStrmObj = AudioSystem.getAudioInputStream(clipFile);
-            AudioFormat format = audioStrmObj.getFormat();
-            DataLine.Info info = new DataLine.Info(Clip.class, format);
-            Clip audioClip = (Clip) AudioSystem.getLine(info);
-            audioClip.open(audioStrmObj);
-            audioClip.start();
-            audioClip.loop(Clip.LOOP_CONTINUOUSLY);
-        } catch (Exception ex) {
-            System.out.println("NOT");
+        if (playerOne.getHasFlag()) {
+            points[0]++;
+        } else {
+            points[1]++;
         }
+
+        restart();
     }
 
-    //gameLevel
+
+    private void restart() {
+
+        playerOne.reset();
+        playerTwo.reset();
+
+        flag = new Flag(21, 15);
+
+        maze.init();
+        maze.generate();
+
+        mazeGfx.restartMazeGfx();
+
+        roundEnd = false;
 
 
-    //getGameLevel method
-    public int getGameLevel() {
-        return gameLevel;
+        try{
+            start();
+        } catch (InterruptedException e) {
+
+        }
+
     }
 
-    //setGameLevel method
-    public void setGameLevel(int gameLevel) {
-        this.gameLevel = gameLevel;
+    private void playThemeSong() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        audioStrmObj = AudioSystem.getAudioInputStream(escapeSong);
+        format = audioStrmObj.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+        Clip audioClip = (Clip) AudioSystem.getLine(info);
+        audioClip.open(audioStrmObj);
+        audioClip.start();
+        audioClip.loop(Clip.LOOP_CONTINUOUSLY);
     }
+
+    private void stopThemeSong() {
+        audioClip.stop();
+    }
+
+    private void playEscapeSong() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        audioStrmObj = AudioSystem.getAudioInputStream(escapeSong);
+        format = audioStrmObj.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+        Clip audioClip = (Clip) AudioSystem.getLine(info);
+        audioClip.open(audioStrmObj);
+        audioClip.start();
+        audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+
+    private void stopEscapeSong() {
+        audioClip.stop();
+    }
+
+
+
 }
