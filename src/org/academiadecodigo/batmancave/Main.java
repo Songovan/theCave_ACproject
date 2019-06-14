@@ -41,7 +41,11 @@ public class Main {
 
         */
 
-        Menu menu = new Menu();
+        Game game = new Game();
+
+        game.menu();
+
+
 
 
     //Menu menu = new Menu();

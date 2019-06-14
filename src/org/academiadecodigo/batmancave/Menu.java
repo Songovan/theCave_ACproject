@@ -9,6 +9,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Menu implements KeyboardHandler {
 
     private Game game;
+    private boolean isGameStart;
     private Picture bg;
     private Picture start;
     private Picture startPressed;
@@ -32,6 +33,9 @@ public class Menu implements KeyboardHandler {
         //title.draw();
         start.draw();
         quit.draw();
+    }
+
+    public void keyboard(){
 
         Keyboard keyboard = new Keyboard(this);
 
@@ -54,32 +58,38 @@ public class Menu implements KeyboardHandler {
         quitGame.setKey(KeyboardEvent.KEY_ESC);
         quitGame.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         keyboard.addEventListener(quitGame);
+    }
 
+    public boolean isGameStart() {
+        return isGameStart;
     }
 
     @Override
     public void keyPressed(KeyboardEvent e) {
         if (e.getKey() == KeyboardEvent.KEY_SPACE) {
-            start.delete();
-            startPressed.draw();
+            if (!isGameStart) {
+                start.delete();
+                startPressed.draw();
+            }
         } else if (e.getKey() == KeyboardEvent.KEY_ESC){
-            quit.delete();
-            quitPressed.draw();
+            if (!isGameStart) {
+                quit.delete();
+                quitPressed.draw();
+            }
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent e) {
             if (e.getKey() == KeyboardEvent.KEY_SPACE) {
-
-                startPressed.delete();
-                start.draw();
-                start.delete();
-                quit.delete();
-                bg.delete();
-                Game game = new Game();
-                game.init();
-
+                if (!isGameStart) {
+                    startPressed.delete();
+                    start.draw();
+                    start.delete();
+                    quit.delete();
+                    bg.delete();
+                    isGameStart = true;
+                }
             } else if (e.getKey() == KeyboardEvent.KEY_ESC){
                 System.exit(0);
             }

@@ -13,6 +13,7 @@ import java.io.File;
 
 public class Game {
 
+    private Menu menu;
     private Maze maze;
     private MazeGfx mazeGfx;
     private MovementDetector movementDetector;
@@ -28,9 +29,29 @@ public class Game {
 
     }
 
-    public void init() {
+
+    public void menu(){
+        menu = new Menu();
+
+        menu.keyboard();
 
         runSound();
+
+        while (!menu.isGameStart()){
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e ) {
+            }
+        }
+        System.out.println("uftcxydj");
+        init();
+        System.out.println("2");
+
+    }
+
+    public void init() {
+
+
 
         maze.init();
 
@@ -58,21 +79,25 @@ public class Game {
 
         playerTwo.setMazeGfx(mazeGfx);
 
-        playerOne.walk();
 
-        playerTwo.walk();
+        start();
+
+
 
     }
 
     public void start() {
 
+        playerOne.walk();
 
-        /*while(true) {
+        playerTwo.walk();
+
+        while(true) {
 
             // Move Ghost
 
             // Make condition to win level and raise level
-        }*/
+        }
     }
 
     public void runSound() {
