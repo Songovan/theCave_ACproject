@@ -66,7 +66,7 @@ public class Game {
 
         flag = new Flag(21,15);
 
-        flag.setMazeGfx(mazeGfx);
+        //flag.setMazeGfx(mazeGfx);
 
         playerOne = new PlayerOne(0,1);
 
@@ -94,6 +94,14 @@ public class Game {
 
         playerTwo.setMazeGfx(mazeGfx);
 
+        mazeGfx.setPlayers(players);
+
+        try{
+            start();
+        } catch (InterruptedException e) {
+
+        }
+
     }
 
     public void start() throws InterruptedException{
@@ -101,6 +109,7 @@ public class Game {
         playerOne.walk();
         playerTwo.walk();
 
+        /*
         while(!roundEnd) {
 
             Thread.sleep(50);
@@ -110,6 +119,7 @@ public class Game {
             roundEnd = movementDetector.roundEnd(players);
 
         }
+        */
 
         if(playerOne.getHasFlag()) {
             points[0]++;

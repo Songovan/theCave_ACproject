@@ -77,7 +77,7 @@ public class Menu implements KeyboardHandler {
                 start.delete();
                 quit.delete();
                 bg.delete();
-                Game game = new Game();
+                new Game();
                 game.init();
 
             } else if (e.getKey() == KeyboardEvent.KEY_ESC){
