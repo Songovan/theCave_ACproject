@@ -152,7 +152,7 @@ public class MazeGfx {
 
     private void drawGhost() {
 
-        int[] pos = randomPos();
+        int[] pos = {31,15}; //randomPos();
 
         ghost = new Picture(pos[0]*cellSize+5, pos[1]*cellSize+5, "death.png");
 

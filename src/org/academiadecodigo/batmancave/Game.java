@@ -42,7 +42,7 @@ public class Game {
 
         playerTwo = new PlayerTwo(maze.getLayout().length-1, maze.getLayout()[0].length-2);
 
-        ghost = new Ghost();
+        ghost = new Ghost(31,15);
 
         movementDetector = new MovementDetector(maze, ghost);
 
@@ -60,13 +60,16 @@ public class Game {
 
     }
 
-    public void start() {
+    public void start() throws InterruptedException{
         playerOne.walk();
         playerTwo.walk();
 
+
         while(true) {
 
+            Thread.sleep(100);
             // Move Ghost
+            ghost.move();
 
             // Make condition to win level and raise level
         }

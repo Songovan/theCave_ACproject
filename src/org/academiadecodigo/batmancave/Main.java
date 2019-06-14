@@ -45,7 +45,11 @@ public class Main {
 
         game.init();
 
-        game.start();
+        try {
+            game.start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
