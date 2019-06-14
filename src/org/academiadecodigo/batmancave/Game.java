@@ -12,6 +12,7 @@ import org.academiadecodigo.batmancave.gameobjects.enemies.Ghost;
 
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 
 public class Game {
 
@@ -20,20 +21,42 @@ public class Game {
     private MovementDetector movementDetector;
     private PlayerOne playerOne;
     private PlayerTwo playerTwo;
+    private Player[] players;
     private Ghost ghost;
     private Flag flag;
     private int gameLevel;
+    private boolean roundEnd;
+    private int[] points;
+    private File mainTheme = new File("./resources/atTheEndOfAllThings.wav"); // path to your clip
+    private File escapeSong = new File("./resources/flee-flag.wav"); // path to your clip
+
+
+
+    private AudioInputStream audioStrmObj;
+    private AudioFormat format;
+    private DataLine.Info info;
+    private Clip audioClip;
+
+
 
     public Game() {
         maze = new Maze(41, 31);
         mazeGfx = new MazeGfx(maze);
         gameLevel = 1;
-
+        points = new int[]{0,0};
     }
 
     public void init() {
 
-        runSound();
+        try{
+            playThemeSong();
+        } catch (UnsupportedAudioFileException e1) {
+            System.out.println("NOT");
+        } catch (IOException e2) {
+
+        } catch (LineUnavailableException e3) {
+
+        }
 
         maze.init();
 
@@ -48,6 +71,12 @@ public class Game {
         playerOne = new PlayerOne(0,1);
 
         playerTwo = new PlayerTwo(maze.getLayout().length-1, maze.getLayout()[0].length-2);
+
+        players = new Player[2];
+
+        players[0] = playerOne;
+
+        players[1] = playerTwo;
 
         ghost = new Ghost();
 
@@ -65,49 +94,71 @@ public class Game {
 
         playerTwo.setMazeGfx(mazeGfx);
 
-        playerOne.walk();
+    }
 
+    public void start() throws InterruptedException{
+
+        playerOne.walk();
         playerTwo.walk();
 
-    }
+        while(!roundEnd) {
 
-    public void start() {
-
-
-        /*while(true) {
-
+            Thread.sleep(50);
             // Move Ghost
-
             // Make condition to win level and raise level
-        }*/
-    }
+       
+            roundEnd = movementDetector.roundEnd(players);
 
-    public void runSound() {
-        try {
-
-            File clipFile = new File("./resources/atTheEndOfAllThings.wav"); // path to your clip
-            AudioInputStream audioStrmObj = AudioSystem.getAudioInputStream(clipFile);
-            AudioFormat format = audioStrmObj.getFormat();
-            DataLine.Info info = new DataLine.Info(Clip.class, format);
-            Clip audioClip = (Clip) AudioSystem.getLine(info);
-            audioClip.open(audioStrmObj);
-            audioClip.start();
-            audioClip.loop(Clip.LOOP_CONTINUOUSLY);
-        } catch (Exception ex) {
-            System.out.println("NOT");
         }
+
+        if(playerOne.getHasFlag()) {
+            points[0]++;
+        } else {
+            points[1]++;
+        }
+
+        restart();
     }
 
-    //gameLevel
+    private void restart() {
 
+        playerOne.reset();
+        playerTwo.reset();
 
-    //getGameLevel method
-    public int getGameLevel() {
-        return gameLevel;
+        mazeGfx.restartMazeGfx();
+
+        roundEnd = false;
+
     }
 
-    //setGameLevel method
-    public void setGameLevel(int gameLevel) {
-        this.gameLevel = gameLevel;
+    private void playThemeSong() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        audioStrmObj = AudioSystem.getAudioInputStream(escapeSong);
+        format = audioStrmObj.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+        Clip audioClip = (Clip) AudioSystem.getLine(info);
+        audioClip.open(audioStrmObj);
+        audioClip.start();
+        audioClip.loop(Clip.LOOP_CONTINUOUSLY);
     }
+
+    private void stopThemeSong() {
+        audioClip.stop();
+    }
+
+    private void playEscapeSong() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        audioStrmObj = AudioSystem.getAudioInputStream(escapeSong);
+        format = audioStrmObj.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+        Clip audioClip = (Clip) AudioSystem.getLine(info);
+        audioClip.open(audioStrmObj);
+        audioClip.start();
+        audioClip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+
+    private void stopEscapeSong() {
+        audioClip.stop();
+    }
+
+
+
 }

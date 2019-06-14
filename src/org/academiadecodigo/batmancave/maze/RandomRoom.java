@@ -6,13 +6,16 @@ import java.util.List;
 public class RandomRoom {
 
     public static Directions randomRoom(boolean[] arr) {
-        int roomCounter = 0;
+        //int roomCounter = 0;
 
+        /*
         for(int i = 0; i < arr.length; i++) {
             if(arr[i]) {
                 roomCounter++;
             }
         }
+        */
+
 
         List helper = new ArrayList();
 

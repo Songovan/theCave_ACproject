@@ -19,12 +19,18 @@ public class Flag {
         this.mazeGfx = mazeGfx;
     }
 
+    /*
     public void moveFlag(int col, int row) {
         pos.changePosition(col, row);
         mazeGfx.moveFlag(col, row);
     }
+    */
 
     public Position getPos() {
         return pos;
+    }
+
+    public void setPos(Position pos) {
+        this.pos = pos;
     }
 }

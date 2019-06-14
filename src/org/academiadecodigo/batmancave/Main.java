@@ -10,36 +10,7 @@ import javax.sound.sampled.Clip;
 
 public class Main {
 
-    public static void main(String[] args) {
-
-        /*
-        Maze maze = new Maze(51,31);
-
-        maze.init();
-
-        //maze.printMaze();
-
-        maze.generate();
-
-        //maze.printMaze();
-
-        MazeGfx mazeGfx = new MazeGfx(maze);
-
-        mazeGfx.init();
-
-
-
-        Player player = new Player();
-
-        MovementDetector movementDetector = new MovementDetector(maze, player);
-
-        player.setMazeGfx(mazeGfx);
-
-        player.setMovementDetector(movementDetector);
-
-        player.walk();
-
-        */
+    public static void main(String[] args) throws InterruptedException{
 
         Menu menu = new Menu();
 

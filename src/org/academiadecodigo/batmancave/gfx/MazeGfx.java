@@ -1,5 +1,6 @@
 package org.academiadecodigo.batmancave.gfx;
 
+import org.academiadecodigo.batmancave.Player.Player;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -11,6 +12,7 @@ public class MazeGfx {
     private Cell[][] mazeLayout;
     private final int PADDING = 10;
     private int cellSize;
+    private Player[] players;
     private Picture playerOne;
     private Picture playerTwo;
     private Picture ghost;
@@ -119,12 +121,18 @@ public class MazeGfx {
         int distanceOne;
         int distanceTwo;
 
-        distanceOne = (int)(Math.sqrt((playerOne.getX() - flag.getX())*(playerOne.getX() - flag.getX()) + (playerOne.getY() - flag.getY())*(playerOne.getY() - flag.getY())))/cellSize;
+        distanceOne = (int)(Math.sqrt((playerOne.getX() - flag.getX())*(playerOne.getX() - flag.getX()) + (playerOne.getY() - flag.getY())*(playerOne.getY() - flag.getY()))/cellSize);
 
-        distanceTwo = (int)(Math.sqrt((playerTwo.getX() - flag.getX())*(playerTwo.getX() - flag.getX()) + (playerTwo.getY() - flag.getY())*(playerTwo.getY() - flag.getY())))/cellSize;
+        distanceTwo = (int)(Math.sqrt((playerTwo.getX() - flag.getX())*(playerTwo.getX() - flag.getX()) + (playerTwo.getY() - flag.getY())*(playerTwo.getY() - flag.getY()))/cellSize);
+
+
 
         if(distanceOne < viewRadius || distanceTwo < viewRadius) {
-            flag.draw();
+            if(!players[0].getHasFlag() && !players[1].getHasFlag()) {
+                flag.draw();
+            } else {
+                flag.delete();
+            }
         } else {
             flag.delete();
         }
@@ -186,8 +194,23 @@ public class MazeGfx {
     }
 
 
-    public void moveFlag(int col, int row) {
-        flag.translate((double)(col*cellSize), (double)(row*cellSize));
+    public void setPlayers(Player[] players) {
+        this.players = players;
     }
 
+    public void restartMazeGfx() {
+        playerOne.delete();
+        playerOne = new Picture( 5, cellSize , "robin.png");
+        playerOne.grow(-5,-5);
+
+        playerTwo.delete();
+        playerTwo = new Picture( (mazeLayout.length-1) * cellSize + 5, (mazeLayout[0].length - 2) * cellSize, "robin.png");
+        playerTwo.grow(-5,-5);
+
+        flag = new Picture(Math.ceil(21*cellSize + PADDING), Math.ceil(15) * cellSize + PADDING, "flag.png");
+
+        drawMaze();
+        playerOne.draw();
+        playerTwo.draw();
+    }
 }
