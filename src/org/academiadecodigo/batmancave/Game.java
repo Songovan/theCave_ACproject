@@ -47,10 +47,10 @@ public class Game {
 
 
     public void menu(){
+
         menu = new Menu();
 
         menu.keyboard();
-
         try{
             playThemeSong();
         } catch (UnsupportedAudioFileException e1) {
@@ -61,6 +61,7 @@ public class Game {
 
         }
 
+
         while (!menu.isGameStart()){
             try {
                 Thread.sleep(500);
@@ -68,6 +69,8 @@ public class Game {
             }
         }
         System.out.println("uftcxydj");
+        stopThemeSong();
+        playEscapeSong();
         init();
         System.out.println("2");
 
@@ -177,7 +180,7 @@ public class Game {
     }
 
     private void playThemeSong() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        audioStrmObj = AudioSystem.getAudioInputStream(escapeSong);
+        audioStrmObj = AudioSystem.getAudioInputStream(mainTheme);
         format = audioStrmObj.getFormat();
         DataLine.Info info = new DataLine.Info(Clip.class, format);
         Clip audioClip = (Clip) AudioSystem.getLine(info);
