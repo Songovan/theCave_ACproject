@@ -45,14 +45,6 @@ public class Main {
 
         game.menu();
 
-        game.init();
-
-        try {
-            game.start();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    //Menu menu = new Menu();
     }
 
 
