@@ -139,14 +139,8 @@ public class MazeGfx {
                         ghost2.delete();
                     }
                 }
-
-
-
-
             }
         }
-
-
     }
 
     private void drawPlayer() {
