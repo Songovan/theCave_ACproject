@@ -60,6 +60,7 @@ public class PlayerOne extends Player implements KeyboardHandler {
                 if (movementDetector.checkMove(Directions.RIGHT, this)) {
                     pos.changePosition(1, 0);
                     mazeGfx.movePlayerOne(1, 0);
+                    System.out.println("moved once");
                 }
                 break;
             case KeyboardEvent.KEY_S:

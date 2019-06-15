@@ -105,64 +105,7 @@ public class Ghost extends Enemy {
                 }
 
             }
-    } /* JÁ ESTÁ: Movimentar-se para uma posição random e que seja permitida
-         FALTA: Fazer o supra, apenas se o Player não estiver na Range - tratar da DETEÇÃO DO PLAYER
-                    Ao DETETAR O PLAYER, fazer move Seguindo o Player*/
-
-    private class PlayerDetector {
-        private PlayerOne player1;
-        private PlayerTwo player2;
-        private Ghost ghost;
-        private boolean detected;
-        private MovementDetector movementDetector;
-
-    /*public boolean isDetected(){
-        boolean[] notWall = new boolean[4];
-        for(int i = 0; i < notWall.length; i++){
-            switch(i){
-                case 0:
-                    notWall[0] = movementDetector.checkMove(Directions.UP,ghost);
-                    break;
-                case 1:
-                    notWall[1] = movementDetector.checkMove(Directions.RIGHT,ghost);
-                case 2:
-                    notWall[2] = movementDetector.checkMove(Directions.LEFT,ghost);
-                default:
-                    notWall[3] = movementDetector.checkMove(Directions.DOWN,ghost);
-            }
-        }
-
-        for(int i = 0; i < notWall.length; i++){
-            if(notWall[i]){
-                if(player1.) //se a col or row do player1/2 for == à col or row do ghost +3, return true
-            }
-        }
-    }*/
     }
-
-   /* public void move () {
-
-        switch (ghostLevel) {
-            case 1:
-                // Level 1 behaviour: random movement
-
-
-
-
-
-                break;
-            case 2:
-                // Level 2 behaviour: follows if player is seen in a straight line
-
-                break;
-            case 3:
-                // follows player after first encounter
-
-                break;
-            default:
-                break;
-        }
-    }*/
 
     private int[] randomPos (int quadrant) {
 

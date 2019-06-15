@@ -1,5 +1,7 @@
 package org.academiadecodigo.batmancave;
 
+import org.academiadecodigo.batmancave.Player.Player;
+
 public class Position {
 
     private int col;
@@ -31,5 +33,4 @@ public class Position {
         col = startCol;
         row = startRow;
     }
-
 }

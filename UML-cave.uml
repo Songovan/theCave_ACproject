@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="855.6409456560959" y="423.0">org.academiadecodigo.batmancave.Position</node>
+    <node x="1491.6361513034094" y="233.0">org.academiadecodigo.batmancave.maze.Cell</node>
+    <node x="969.3633599190678" y="1741.0">org.academiadecodigo.batmancave.Player.Player</node>
+    <node x="2072.0153440460517" y="1037.0">org.academiadecodigo.batmancave.gameobjects.Usables.Usables</node>
+    <node x="1821.9132034632034" y="2138.0">org.academiadecodigo.batmancave.gameobjects.enemies.Bat</node>
+    <node x="495.0" y="2149.0">org.academiadecodigo.batmancave.Player.PlayerOne</node>
+    <node x="1380.582579874838" y="893.0">org.academiadecodigo.batmancave.gfx.MazeGfx</node>
+    <node x="720.3633599190678" y="1983.0">org.academiadecodigo.batmancave.Menu</node>
+    <node x="904.2919313476391" y="1545.0">org.academiadecodigo.batmancave.maze.MovementDetector</node>
+    <node x="1378.082579874838" y="665.0">org.academiadecodigo.batmancave.maze.Maze</node>
+    <node x="738.2919313476392" y="654.0">org.academiadecodigo.batmancave.gameobjects.Usables.Flag</node>
+    <node x="1188.0002646809726" y="288.5">org.academiadecodigo.batmancave.maze.RandomRoom</node>
+    <node x="1679.6361513034094" y="677.0">org.academiadecodigo.batmancave.gameobjects.enemies.GhostSelector</node>
+    <node x="1362.207579874838" y="423.0">org.academiadecodigo.batmancave.maze.Excavator</node>
+    <node x="1048.9818547470052" y="0.0">org.academiadecodigo.batmancave.maze.Directions</node>
+    <node x="2314.5153440460517" y="0.0">org.academiadecodigo.batmancave.gameobjects.Usables.SpeedBooster</node>
+    <node x="800.3633599190678" y="2506.0">org.academiadecodigo.batmancave.Game</node>
+    <node x="1719.151058331766" y="1037.0">org.academiadecodigo.batmancave.gameobjects.enemies.Enemy</node>
+    <node x="1120.1912103370685" y="1322.0">org.academiadecodigo.batmancave.gameobjects.enemies.Ghost</node>
+    <node x="1380.6068547470052" y="45.0">org.academiadecodigo.batmancave.maze.CellType</node>
+    <node x="288.0" y="2149.0">org.academiadecodigo.batmancave.Player.PlayerTwo</node>
+    <node x="914.8633599190678" y="3004.0">org.academiadecodigo.batmancave.Main</node>
+    <node x="0.0" y="2127.0">org.academiadecodigo.batmancave.Sound</node>
+    <node x="553.2919313476392" y="677.0">org.academiadecodigo.batmancave.PlayersSelector</node>
+    <node x="2055.5153440460517" y="1389.0">org.academiadecodigo.batmancave.gameobjects.Usables.Carrot</node>
+    <node x="1822.57987012987" y="1807.5">org.academiadecodigo.batmancave.gameobjects.enemies.Defeatable</node>
+    <node x="2162.5153440460517" y="1389.0">org.academiadecodigo.batmancave.gameobjects.Usables.Flashlight</node>
+    <node x="1930.0164867816372" y="699.0">org.academiadecodigo.batmancave.gameobjects.GameObject</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.Usables.Flag" target="org.academiadecodigo.batmancave.Position">
+      <point x="30.0" y="-59.5" />
+      <point x="888.2919313476392" y="634.0" />
+      <point x="934.4742789894292" y="634.0" />
+      <point x="-7.1666666666667425" y="70.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost" target="org.academiadecodigo.batmancave.maze.MovementDetector">
+      <point x="-41.42857142857133" y="81.5" />
+      <point x="1223.7626389084971" y="1525.0" />
+      <point x="1155.091931347639" y="1525.0" />
+      <point x="118.79999999999995" y="-48.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.Cell" target="org.academiadecodigo.batmancave.maze.CellType">
+      <point x="41.75" y="-70.0" />
+      <point x="1616.8861513034094" y="193.0" />
+      <point x="1455.6068547470052" y="193.0" />
+      <point x="25.0" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.gameobjects.enemies.GhostSelector">
+      <point x="83.55555555555566" y="-169.5" />
+      <point x="1558.1381354303937" y="863.0" />
+      <point x="1702.302817970076" y="863.0" />
+      <point x="-45.33333333333337" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Bat" target="org.academiadecodigo.batmancave.gameobjects.enemies.Defeatable">
+      <point x="0.0" y="-36.5" />
+      <point x="1889.9132034632034" y="1963.0" />
+      <point x="1879.07987012987" y="1963.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.RandomRoom" target="org.academiadecodigo.batmancave.maze.Directions">
+      <point x="0.0" y="-14.5" />
+      <point x="1254.5002646809726" y="193.0" />
+      <point x="1191.1961404612907" y="193.0" />
+      <point x="51.71428571428555" y="81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Enemy" target="org.academiadecodigo.batmancave.gameobjects.GameObject">
+      <point x="0.0" y="-25.5" />
+      <point x="1786.651058331766" y="873.0" />
+      <point x="1960.7664867816372" y="873.0" />
+      <point x="-30.75" y="14.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.gameobjects.Usables.Flag">
+      <point x="-82.875" y="-224.0" />
+      <point x="870.4883599190678" y="2436.0" />
+      <point x="483.5" y="2436.0" />
+      <point x="483.5" y="873.0" />
+      <point x="798.2919313476392" y="873.0" />
+      <point x="-60.0" y="59.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Main" target="org.academiadecodigo.batmancave.Game">
+      <point x="19.25" y="-14.5" />
+      <point x="972.6133599190678" y="2979.0" />
+      <point x="1029.8633599190678" y="2979.0" />
+      <point x="76.5" y="224.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.maze.CellType">
+      <point x="62.66666666666674" y="-169.5" />
+      <point x="1537.2492465415048" y="853.0" />
+      <point x="1669.1361513034094" y="853.0" />
+      <point x="1669.1361513034094" y="183.0" />
+      <point x="1472.2735214136717" y="183.0" />
+      <point x="41.666666666666515" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Enemy" target="org.academiadecodigo.batmancave.Player.Player">
+      <point x="0.0" y="25.5" />
+      <point x="1786.651058331766" y="1302.0" />
+      <point x="1768.4012987012986" y="1302.0" />
+      <point x="1768.4012987012986" y="1721.0" />
+      <point x="1249.0062170619249" y="1721.0" />
+      <point x="134.6428571428571" y="-81.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.gameobjects.Usables.Flag">
+      <point x="-62.66666666666674" y="-169.5" />
+      <point x="1411.9159132081713" y="823.0" />
+      <point x="918.2919313476392" y="823.0" />
+      <point x="60.0" y="59.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.maze.Maze">
+      <point x="133.875" y="-224.0" />
+      <point x="1087.2383599190678" y="2476.0" />
+      <point x="2001.4132034632034" y="2476.0" />
+      <point x="2001.4132034632034" y="813.0" />
+      <point x="1551.782579874838" y="813.0" />
+      <point x="77.19999999999982" y="48.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.maze.Maze">
+      <point x="0.0" y="-169.5" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.Player" target="org.academiadecodigo.batmancave.Position">
+      <point x="-93.21428571428578" y="-81.0" />
+      <point x="1021.149074204782" y="1691.0" />
+      <point x="705.7919313476392" y="1691.0" />
+      <point x="705.7919313476392" y="584.0" />
+      <point x="862.8076123227627" y="584.0" />
+      <point x="-78.83333333333326" y="70.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost" target="org.academiadecodigo.batmancave.maze.Directions">
+      <point x="-26.36363636363626" y="-81.5" />
+      <point x="1238.8275739734322" y="1262.0" />
+      <point x="1165.6252646809726" y="1262.0" />
+      <point x="25.85714285714289" y="81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.maze.Cell">
+      <point x="20.888888888888914" y="-169.5" />
+      <point x="1495.471468763727" y="833.0" />
+      <point x="1607.3742465415048" y="833.0" />
+      <point x="1607.3742465415048" y="393.0" />
+      <point x="1622.8504370176952" y="393.0" />
+      <point x="47.71428571428578" y="70.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.MovementDetector" target="org.academiadecodigo.batmancave.maze.CellType">
+      <point x="-13.200000000000045" y="-48.0" />
+      <point x="1023.091931347639" y="1525.0" />
+      <point x="1030.791931347639" y="1525.0" />
+      <point x="1030.791931347639" y="853.0" />
+      <point x="1143.6252646809726" y="853.0" />
+      <point x="1143.6252646809726" y="203.0" />
+      <point x="1388.9401880803387" y="203.0" />
+      <point x="-41.666666666666515" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.MovementDetector" target="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost">
+      <point x="66.0" y="-48.0" />
+      <point x="1102.291931347639" y="1505.0" />
+      <point x="1140.9054960513542" y="1505.0" />
+      <point x="-124.28571428571422" y="81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.PlayerOne" target="org.academiadecodigo.batmancave.maze.Directions">
+      <point x="-69.0" y="-25.5" />
+      <point x="518.0" y="1923.0" />
+      <point x="494.5" y="1923.0" />
+      <point x="494.5" y="213.0" />
+      <point x="1087.7675690327194" y="213.0" />
+      <point x="-51.71428571428578" y="81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.Player.PlayerOne">
+      <point x="-57.375" y="-224.0" />
+      <point x="895.9883599190678" y="2416.0" />
+      <point x="633.0" y="2416.0" />
+      <point x="46.0" y="25.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.Maze" target="org.academiadecodigo.batmancave.maze.Cell">
+      <point x="48.25" y="-48.5" />
+      <point x="1522.832579874838" y="624.0" />
+      <point x="1568.707579874838" y="624.0" />
+      <point x="1568.707579874838" y="393.0" />
+      <point x="1575.1361513034094" y="393.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.MovementDetector" target="org.academiadecodigo.batmancave.maze.Maze">
+      <point x="13.200000000000045" y="-48.0" />
+      <point x="1049.4919313476391" y="1525.0" />
+      <point x="1041.791931347639" y="1525.0" />
+      <point x="1041.791931347639" y="863.0" />
+      <point x="1397.3825798748383" y="863.0" />
+      <point x="-77.19999999999982" y="48.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost" target="org.academiadecodigo.batmancave.maze.RandomRoom">
+      <point x="0.0" y="-81.5" />
+      <point x="1265.1912103370685" y="1252.0" />
+      <point x="1221.2502646809726" y="1252.0" />
+      <point x="-33.25" y="14.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.MovementDetector" target="org.academiadecodigo.batmancave.maze.Directions">
+      <point x="-39.59999999999991" y="-48.0" />
+      <point x="996.6919313476392" y="1525.0" />
+      <point x="999.7919313476392" y="1525.0" />
+      <point x="999.7919313476392" y="843.0" />
+      <point x="1099.6252646809726" y="843.0" />
+      <point x="1099.6252646809726" y="213.0" />
+      <point x="1113.6247118898623" y="213.0" />
+      <point x="-25.85714285714289" y="81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.PlayersSelector">
+      <point x="-83.55555555555566" y="-169.5" />
+      <point x="1391.0270243192824" y="833.0" />
+      <point x="681.0919313476393" y="833.0" />
+      <point x="56.80000000000007" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.Player.Player">
+      <point x="31.875" y="-224.0" />
+      <point x="985.2383599190678" y="2396.0" />
+      <point x="1168.7383599190678" y="2396.0" />
+      <point x="54.375" y="81.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.PlayerTwo" target="org.academiadecodigo.batmancave.maze.Directions">
+      <point x="-69.375" y="-25.5" />
+      <point x="311.125" y="1963.0" />
+      <point x="317.4375" y="1963.0" />
+      <point x="317.4375" y="203.0" />
+      <point x="1061.9104261755765" y="203.0" />
+      <point x="-77.57142857142867" y="81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost" target="org.academiadecodigo.batmancave.gameobjects.enemies.Enemy">
+      <point x="131.81818181818176" y="-81.5" />
+      <point x="1397.0093921552502" y="1302.0" />
+      <point x="1741.651058331766" y="1302.0" />
+      <point x="-45.0" y="25.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.gameobjects.enemies.GhostSelector">
+      <point x="146.625" y="-224.0" />
+      <point x="1099.9883599190678" y="2486.0" />
+      <point x="2041.6820107127185" y="2486.0" />
+      <point x="2041.6820107127185" y="803.0" />
+      <point x="1792.9694846367427" y="803.0" />
+      <point x="45.33333333333326" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.Excavator" target="org.academiadecodigo.batmancave.maze.Cell">
+      <point x="74.0" y="-70.5" />
+      <point x="1528.707579874838" y="403.0" />
+      <point x="1527.4218655891236" y="403.0" />
+      <point x="-47.71428571428578" y="70.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.Excavator" target="org.academiadecodigo.batmancave.maze.Directions">
+      <point x="-37.0" y="-70.5" />
+      <point x="1417.707579874838" y="403.0" />
+      <point x="1390.207579874838" y="403.0" />
+      <point x="1390.207579874838" y="183.0" />
+      <point x="1217.0532833184336" y="183.0" />
+      <point x="77.57142857142844" y="81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.PlayerTwo" target="org.academiadecodigo.batmancave.PlayersSelector">
+      <point x="-23.125" y="-25.5" />
+      <point x="357.375" y="843.0" />
+      <point x="567.4919313476393" y="843.0" />
+      <point x="-56.799999999999955" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.MovementDetector" target="org.academiadecodigo.batmancave.Player.Player">
+      <point x="105.59999999999991" y="48.0" />
+      <point x="1141.891931347639" y="1661.0" />
+      <point x="1124.7205027762107" y="1661.0" />
+      <point x="10.35714285714289" y="-81.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.MovementDetector" target="org.academiadecodigo.batmancave.Position">
+      <point x="-66.0" y="-48.0" />
+      <point x="970.2919313476391" y="1525.0" />
+      <point x="988.7919313476392" y="1525.0" />
+      <point x="988.7919313476392" y="634.0" />
+      <point x="963.1409456560959" y="634.0" />
+      <point x="21.5" y="70.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.Sound">
+      <point x="-133.875" y="-224.0" />
+      <point x="819.4883599190678" y="2476.0" />
+      <point x="200.25" y="2476.0" />
+      <point x="66.75" y="47.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.Maze" target="org.academiadecodigo.batmancave.maze.Excavator">
+      <point x="-16.083333333333485" y="-48.5" />
+      <point x="1458.4992465415046" y="604.0" />
+      <point x="1500.957579874838" y="604.0" />
+      <point x="46.25" y="70.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.Player" target="org.academiadecodigo.batmancave.gfx.MazeGfx">
+      <point x="72.5" y="-81.0" />
+      <point x="1186.8633599190678" y="1691.0" />
+      <point x="1469.6381354303935" y="1691.0" />
+      <point x="1469.6381354303935" y="1282.0" />
+      <point x="1474.582579874838" y="1282.0" />
+      <point x="0.0" y="169.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.Usables.Carrot" target="org.academiadecodigo.batmancave.gameobjects.Usables.Usables">
+      <point x="0.0" y="-14.5" />
+      <point x="2099.0153440460517" y="1302.0" />
+      <point x="2114.7653440460517" y="1302.0" />
+      <point x="-42.75" y="25.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost" target="org.academiadecodigo.batmancave.Position">
+      <point x="-131.81818181818176" y="-81.5" />
+      <point x="1133.3730285188867" y="1302.0" />
+      <point x="1063.791931347639" y="1302.0" />
+      <point x="1063.791931347639" y="624.0" />
+      <point x="977.4742789894292" y="624.0" />
+      <point x="35.83333333333326" y="70.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.Excavator" target="org.academiadecodigo.batmancave.maze.RandomRoom">
+      <point x="-74.0" y="-70.5" />
+      <point x="1380.707579874838" y="403.0" />
+      <point x="1287.7502646809726" y="403.0" />
+      <point x="33.25" y="14.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Bat" target="org.academiadecodigo.batmancave.gameobjects.enemies.Enemy">
+      <point x="45.33333333333337" y="-36.5" />
+      <point x="1935.246536796537" y="1963.0" />
+      <point x="1946.07987012987" y="1963.0" />
+      <point x="1946.07987012987" y="1302.0" />
+      <point x="1831.651058331766" y="1302.0" />
+      <point x="45.0" y="25.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Bat" target="org.academiadecodigo.batmancave.Player.Player">
+      <point x="-45.33333333333337" y="-36.5" />
+      <point x="1844.57987012987" y="1963.0" />
+      <point x="1241.2383599190678" y="1963.0" />
+      <point x="126.875" y="81.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost">
+      <point x="-41.77777777777783" y="169.5" />
+      <point x="1432.8048020970602" y="1282.0" />
+      <point x="1344.2821194279775" y="1282.0" />
+      <point x="79.09090909090901" y="-81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.Player.PlayerTwo">
+      <point x="-95.625" y="-224.0" />
+      <point x="857.7383599190678" y="2446.0" />
+      <point x="426.75" y="2446.0" />
+      <point x="46.25" y="25.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.Usables.Flashlight" target="org.academiadecodigo.batmancave.gameobjects.Usables.Usables">
+      <point x="0.0" y="-14.5" />
+      <point x="2216.0153440460517" y="1302.0" />
+      <point x="2200.2653440460517" y="1302.0" />
+      <point x="42.75" y="25.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.gfx.MazeGfx">
+      <point x="95.625" y="-224.0" />
+      <point x="1048.9883599190678" y="2446.0" />
+      <point x="1968.4132034632034" y="2446.0" />
+      <point x="1968.4132034632034" y="1282.0" />
+      <point x="1537.2492465415048" y="1282.0" />
+      <point x="62.66666666666674" y="169.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.Excavator" target="org.academiadecodigo.batmancave.maze.CellType">
+      <point x="0.0" y="-70.5" />
+      <point x="1454.707579874838" y="403.0" />
+      <point x="1441.707579874838" y="403.0" />
+      <point x="1441.707579874838" y="213.0" />
+      <point x="1422.2735214136717" y="213.0" />
+      <point x="-8.333333333333485" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost" target="org.academiadecodigo.batmancave.Player.Player">
+      <point x="0.0" y="81.5" />
+      <point x="1265.1912103370685" y="1671.0" />
+      <point x="1145.4347884904962" y="1671.0" />
+      <point x="31.071428571428555" y="-81.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.PlayerOne" target="org.academiadecodigo.batmancave.Player.Player">
+      <point x="23.0" y="-25.5" />
+      <point x="610.0" y="1953.0" />
+      <point x="1059.9883599190678" y="1953.0" />
+      <point x="-54.375" y="81.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.Player" target="org.academiadecodigo.batmancave.PlayersSelector">
+      <point x="-134.6428571428571" y="-81.0" />
+      <point x="979.7205027762107" y="1711.0" />
+      <point x="624.2919313476391" y="1711.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.Position">
+      <point x="-20.888888888888914" y="-169.5" />
+      <point x="1453.6936909859492" y="803.0" />
+      <point x="1132.6252646809726" y="803.0" />
+      <point x="1132.6252646809726" y="594.0" />
+      <point x="1020.4742789894294" y="594.0" />
+      <point x="78.83333333333348" y="70.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Menu" target="org.academiadecodigo.batmancave.Game">
+      <point x="72.33333333333326" y="191.5" />
+      <point x="901.196693252401" y="2386.0" />
+      <point x="934.2383599190678" y="2386.0" />
+      <point x="-19.125" y="-224.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gfx.MazeGfx" target="org.academiadecodigo.batmancave.Player.Player">
+      <point x="20.888888888888914" y="169.5" />
+      <point x="1495.471468763727" y="1272.0" />
+      <point x="1480.6381354303935" y="1272.0" />
+      <point x="1480.6381354303935" y="1701.0" />
+      <point x="1207.5776456333535" y="1701.0" />
+      <point x="93.21428571428578" y="-81.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.PlayerOne" target="org.academiadecodigo.batmancave.PlayersSelector">
+      <point x="-23.0" y="-25.5" />
+      <point x="564.0" y="853.0" />
+      <point x="595.8919313476392" y="853.0" />
+      <point x="-28.399999999999977" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.Menu">
+      <point x="-31.875" y="-224.0" />
+      <point x="921.4883599190678" y="2396.0" />
+      <point x="828.8633599190678" y="2396.0" />
+      <point x="0.0" y="191.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost" target="org.academiadecodigo.batmancave.gameobjects.enemies.GhostSelector">
+      <point x="105.4545454545455" y="-81.5" />
+      <point x="1370.645755791614" y="1292.0" />
+      <point x="1688.276058331766" y="1292.0" />
+      <point x="1688.276058331766" y="873.0" />
+      <point x="1747.6361513034094" y="873.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost">
+      <point x="70.125" y="-224.0" />
+      <point x="1023.4883599190678" y="2426.0" />
+      <point x="1795.32987012987" y="2426.0" />
+      <point x="1795.32987012987" y="1515.0" />
+      <point x="1348.0483531942114" y="1515.0" />
+      <point x="82.85714285714289" y="81.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Game" target="org.academiadecodigo.batmancave.maze.MovementDetector">
+      <point x="6.375" y="-224.0" />
+      <point x="958.8633599190678" y="1721.0" />
+      <point x="983.4919313476391" y="1721.0" />
+      <point x="-52.799999999999955" y="48.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.MovementDetector" target="org.academiadecodigo.batmancave.gameobjects.Usables.Flag">
+      <point x="-118.79999999999995" y="-48.0" />
+      <point x="917.4919313476391" y="1525.0" />
+      <point x="852.7919313476392" y="1525.0" />
+      <point x="852.7919313476392" y="873.0" />
+      <point x="838.2919313476392" y="873.0" />
+      <point x="-20.0" y="59.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.Usables.Usables" target="org.academiadecodigo.batmancave.gameobjects.GameObject">
+      <point x="0.0" y="-25.5" />
+      <point x="2157.5153440460517" y="793.0" />
+      <point x="2022.2664867816372" y="793.0" />
+      <point x="30.75" y="14.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.maze.Maze" target="org.academiadecodigo.batmancave.maze.CellType">
+      <point x="-80.41666666666652" y="-48.5" />
+      <point x="1394.1659132081716" y="634.0" />
+      <point x="1351.707579874838" y="634.0" />
+      <point x="1351.707579874838" y="213.0" />
+      <point x="1405.6068547470052" y="213.0" />
+      <point x="-25.0" y="36.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.gameobjects.enemies.Ghost" target="org.academiadecodigo.batmancave.gfx.MazeGfx">
+      <point x="26.36363636363626" y="-81.5" />
+      <point x="1291.5548467007047" y="1262.0" />
+      <point x="1391.0270243192824" y="1262.0" />
+      <point x="-83.55555555555566" y="169.5" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.PlayerTwo" target="org.academiadecodigo.batmancave.Player.Player">
+      <point x="23.125" y="-25.5" />
+      <point x="403.625" y="1933.0" />
+      <point x="987.4883599190678" y="1933.0" />
+      <point x="-126.875" y="81.0" />
+    </edge>
+    <edge source="org.academiadecodigo.batmancave.Player.Player" target="org.academiadecodigo.batmancave.maze.MovementDetector">
+      <point x="-10.35714285714289" y="-81.0" />
+      <point x="1104.0062170619249" y="1721.0" />
+      <point x="1089.091931347639" y="1721.0" />
+      <point x="52.799999999999955" y="48.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5000000000000001" x="1376.9999999999998" y="1000.9999999999998" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Properties</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

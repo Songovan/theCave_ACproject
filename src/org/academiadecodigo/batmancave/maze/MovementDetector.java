@@ -20,9 +20,6 @@ public class MovementDetector {
         int currentCol = player.getPos().getCol();
         int currentRow = player.getPos().getRow();
 
-
-        System.out.println(player.getHasFlag());
-
         return moveSwitch(direction, currentCol, currentRow);
 
     }
@@ -126,5 +123,10 @@ public class MovementDetector {
 
     }
 
+    public boolean playersClash(Player[] players) {
+
+        return players[0].equals(players[1]);
+
+    }
 
 }

@@ -49,10 +49,10 @@ public class MazeGfx {
             }
         }
 
+
         playerOne = new Picture( cellSize + PADDING, cellSize , "Player/player 1 30x30.png");
 
         playerTwo = new Picture( (mazeLayout.length-2) * cellSize + PADDING, (mazeLayout[0].length - 2) * cellSize, "Player/player 2 30x30.png");
-
 
         //DRAW MAZE AROUND PLAYER
         drawMaze();
@@ -76,20 +76,20 @@ public class MazeGfx {
 
                 if(row == mazeLayout[0].length - 1) {
                     // Bottom line
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "bWall_stone30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/bottom_wall.png");
                 } else if (mazeLayout[col][row+1].getType() == CellType.ROOM) {
                     // Wall with room below
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "bWall_stone30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/bottom_wall.png");
                 } else {
                     // regular wall
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "mWall_stone30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/wall.png");
                 }
                 break;
             case ROOM:
                 if(col == flagStart.getCol() && row == flagStart.getRow()) {
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "room_flag30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/power_crystal.png");
                 } else {
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "room_stone30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/room.png");
                 }
                 break;
             default:
@@ -117,6 +117,7 @@ public class MazeGfx {
                 if(distanceOne < viewRadius || distanceTwo < viewRadius) {
                     mazeLayout[i][j].getCellGfx().draw();
                 } else {
+                    System.out.println("Error deleting :" + i + ", " + j);
                     mazeLayout[i][j].getCellGfx().delete();
                 }
 
@@ -173,7 +174,7 @@ public class MazeGfx {
         if(players[0].getHasFlag()) {
             playerOne = new Picture(playerOne.getX(), playerOne.getY(), "Player/player 1 30x30 super.png" );
             mazeLayout[flagStart.getCol()][flagStart.getRow()].getCellGfx().delete();
-            mazeLayout[flagStart.getCol()][flagStart.getRow()].setCellGfx(new Picture(flagStart.getCol()*cellSize+PADDING, flagStart.getRow()*cellSize+PADDING, "room_stone30.png"));
+            mazeLayout[flagStart.getCol()][flagStart.getRow()].setCellGfx(new Picture(flagStart.getCol()*cellSize+PADDING, flagStart.getRow()*cellSize+PADDING, "Wall/room.png"));
             mazeLayout[flagStart.getCol()][flagStart.getRow()].getCellGfx().draw();
         } else {
             playerOne = new Picture(playerOne.getX(), playerOne.getY(), "Player/player 1 30x30.png" );
@@ -190,7 +191,7 @@ public class MazeGfx {
         if(players[1].getHasFlag()) {
             playerTwo = new Picture( playerTwo.getX(), playerTwo.getY(), "Player/player 2 30x30 super.png");
             mazeLayout[flagStart.getCol()][flagStart.getRow()].getCellGfx().delete();
-            mazeLayout[flagStart.getCol()][flagStart.getRow()].setCellGfx(new Picture(flagStart.getCol()*cellSize+PADDING, flagStart.getRow()*cellSize+PADDING, "room_stone30.png"));
+            mazeLayout[flagStart.getCol()][flagStart.getRow()].setCellGfx(new Picture(flagStart.getCol()*cellSize+PADDING, flagStart.getRow()*cellSize+PADDING, "Wall/room.png"));
             mazeLayout[flagStart.getCol()][flagStart.getRow()].getCellGfx().draw();
         } else {
             playerTwo = new Picture( playerTwo.getX(), playerTwo.getY(), "Player/player 2 30x30.png");

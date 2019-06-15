@@ -10,29 +10,67 @@ public class Menu implements KeyboardHandler {
 
     private Game game;
     private boolean isGameStart;
+    private boolean buttonPress;
+    private boolean buttonPress1;
+    private boolean buttonReleased;
     private Picture bg;
     private Picture start;
-    private Picture startPressed;
     private Picture quit;
-    private Picture quitPressed;
+    private Picture button;
+    private Picture button1;
+    private Picture buttonPressed;
+    private Picture buttonPressed1;
+    private Picture pressSpace;
+    private Picture pressEsc;
     private Picture title;
-    private int picCorrection;
+
 
 
     public Menu(){
-        picCorrection = 100;
-        bg = new Picture(10,10,"Menu_back.png");
-        bg.grow(0,picCorrection);
-        bg.translate(0,100);
+        bg = new Picture(10,10,"Menu/background.png");
         bg.draw();
-        //title = new Picture(288, 120, "");
-        start = new Picture(288, 300 + picCorrection, "Start.png");
-        quit = new Picture(288, 390 + picCorrection, "Quit.png");
-        startPressed = new Picture(288, 300 + picCorrection, "Start pressed.png");
-        quitPressed = new Picture(288, 390 + picCorrection, "Quit pressed.png");
-        //title.draw();
+        title = new Picture(376, 180, "Menu/tittle.png");
+        start = new Picture(483, 550, "Menu/buttons/Start.png");
+        quit = new Picture(483, 650, "Menu/buttons/Quit.png");
+        button = new Picture(483, 550, "Menu/buttons/button.png");
+        button1 = new Picture(483, 650, "Menu/buttons/button.png");
+        buttonPressed = new Picture(483, 550, "Menu/buttons/button pressed.png");
+        buttonPressed1 = new Picture(483, 650, "Menu/buttons/button pressed.png");
+        pressSpace = new Picture(539, 565, "Menu/buttons/Press space.png");
+        pressEsc = new Picture(539, 665, "Menu/buttons/Press esc.png");
+        title.draw();
+        button.draw();
+        button1.draw();
         start.draw();
         quit.draw();
+        keyboard();
+
+        while (!isGameStart){
+            if (!buttonPress) {
+                start.delete();
+                pressSpace.draw();
+            }
+            if (!buttonPress1) {
+                quit.delete();
+                pressEsc.draw();
+            }
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e ) {
+            }
+            if (!buttonPress) {
+                pressSpace.delete();
+                start.draw();
+            }
+            if (!buttonPress1 && !buttonReleased) {
+                pressEsc.delete();
+                quit.draw();
+            }
+            try {
+                Thread.sleep(800);
+            } catch (InterruptedException e ) {
+            }
+        }
     }
 
     public void keyboard(){
@@ -68,31 +106,44 @@ public class Menu implements KeyboardHandler {
     public void keyPressed(KeyboardEvent e) {
         if (e.getKey() == KeyboardEvent.KEY_SPACE) {
             if (!isGameStart) {
+                buttonPress = true;
+                pressSpace.delete();
+                button.delete();
                 start.delete();
-                startPressed.draw();
+                buttonPressed.draw();
+                start.draw();
             }
         } else if (e.getKey() == KeyboardEvent.KEY_ESC){
             if (!isGameStart) {
+                buttonPress1 = true;
+                pressEsc.delete();
+                button1.delete();
                 quit.delete();
-                quitPressed.draw();
+                buttonPressed1.draw();
+                quit.draw();
             }
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent e) {
-            if (e.getKey() == KeyboardEvent.KEY_SPACE) {
-                if (!isGameStart) {
-                    startPressed.delete();
-                    start.draw();
-                    start.delete();
-                    quit.delete();
-                    bg.delete();
-                    isGameStart = true;
-                }
+        if (e.getKey() == KeyboardEvent.KEY_SPACE) {
+            if (!isGameStart) {
+                isGameStart = true;
+                buttonReleased = true;
+                title.delete();
+                pressEsc.delete();
+                button.delete();
+                button1.delete();
+                buttonPressed.delete();
+                buttonPressed1.delete();
+                start.delete();
+                quit.delete();
+                bg.delete();
 
-            } else if (e.getKey() == KeyboardEvent.KEY_ESC){
-                System.exit(0);
             }
+        } else if (e.getKey() == KeyboardEvent.KEY_ESC){
+            System.exit(0);
         }
+    }
 }
