@@ -20,7 +20,7 @@ public class MazeGfx {
     private int viewRadius;
 
     public MazeGfx(Maze maze) {
-        cellSize = 30;
+        cellSize = 20;
         mazeLayout = maze.getLayout();
         window = new Rectangle(PADDING, PADDING, mazeLayout.length * cellSize, mazeLayout[0].length * cellSize);
         viewRadius = 5;

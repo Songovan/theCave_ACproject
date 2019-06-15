@@ -79,22 +79,18 @@ public class Ghost extends Enemy {
                 switch(move){
                     case UP:
                         pos.changePosition(0,-1);
-                        System.out.println("col :" + pos.getCol() + " row :" + pos.getRow());
                         mazeGfx.moveGhost(0, -1);
                         break;
                     case RIGHT:
                         pos.changePosition(1,0);
-                        System.out.println("col :" + pos.getCol() + " row :" + pos.getRow());
                         mazeGfx.moveGhost(1,0);
                         break;
                     case LEFT:
                         pos.changePosition(-1,0);
-                        System.out.println("col :" + pos.getCol() + " row :" + pos.getRow());
                         mazeGfx.moveGhost(-1,0);
                         break;
                     case DOWN:
                         pos.changePosition(0,1);
-                        System.out.println("col :" + pos.getCol() + " row :" + pos.getRow());
                         mazeGfx.moveGhost(0,1);
                         break;
                     default:

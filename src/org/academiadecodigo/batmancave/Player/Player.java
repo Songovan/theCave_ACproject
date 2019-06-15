@@ -65,4 +65,11 @@ public abstract class Player implements KeyboardHandler {
         hasFlag = false;
         pos.resetPos();
     }
+
+    public boolean equals (Player obj) {
+        if (this.getPos().getCol() == obj.getPos().getCol() && this.getPos().getRow() == obj.getPos().getRow()) {
+            return true;
+        }
+        return false;
+    }
 }
