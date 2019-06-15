@@ -61,7 +61,8 @@ public abstract class Player implements KeyboardHandler {
     }
 
     public void reset() {
-        pos.resetPos();
+
         hasFlag = false;
+        pos.resetPos();
     }
 }

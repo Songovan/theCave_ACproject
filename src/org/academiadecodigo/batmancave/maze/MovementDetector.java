@@ -22,6 +22,8 @@ public class MovementDetector {
         int currentRow = player.getPos().getRow();
 
 
+        System.out.println(player.getHasFlag());
+
         switch (direction) {
             case UP:
                 if (maze.getLayout()[currentCol][currentRow - 1].getType() == CellType.ROOM) {
@@ -54,6 +56,9 @@ public class MovementDetector {
     }
 
     public boolean checkFlag(Position pos) {
+
+        System.out.println("flag at: " + flag.getPos().getCol() + ", " + flag.getPos().getRow());
+        System.out.println("player at: " + pos.getCol() + ", " + pos.getRow());
 
         //System.out.println("Flag at: " + flag.getPos().getCol() + ", " + flag.getPos().getRow());
         //System.out.println("Player at: " + pos.getCol() + ", " + pos.getRow());

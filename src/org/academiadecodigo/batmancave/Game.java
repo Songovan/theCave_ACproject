@@ -151,10 +151,15 @@ public class Game {
 
     private void restart() {
 
+
+        flag.resetFlag();
+
         playerOne.reset();
         playerTwo.reset();
 
-        flag = new Flag(21, 15);
+
+
+        //flag = new Flag(21, 15);
 
         maze.init();
         maze.generate();

@@ -41,13 +41,8 @@ public class MazeGfx {
 
         playerOne = new Picture( cellSize + PADDING, cellSize , "Player/player 1 30x30.png");
 
-        //playerOne.grow(-5,-5);
-
         playerTwo = new Picture( (mazeLayout.length-2) * cellSize + PADDING, (mazeLayout[0].length - 2) * cellSize, "Player/player 2 30x30.png");
 
-        //playerTwo.grow(-5,-5);
-
-        //flag = new Picture(Math.ceil(21*cellSize + PADDING), Math.ceil(15) * cellSize + PADDING, "flag.png");
 
         //DRAW MAZE AROUND PLAYER
         drawMaze();
@@ -120,29 +115,6 @@ public class MazeGfx {
 
     }
 
-    private void drawFlag() {
-
-        int distanceOne;
-        int distanceTwo;
-
-        distanceOne = (int)(Math.sqrt((playerOne.getX() - flag.getX())*(playerOne.getX() - flag.getX()) + (playerOne.getY() - flag.getY())*(playerOne.getY() - flag.getY()))/cellSize);
-
-        distanceTwo = (int)(Math.sqrt((playerTwo.getX() - flag.getX())*(playerTwo.getX() - flag.getX()) + (playerTwo.getY() - flag.getY())*(playerTwo.getY() - flag.getY()))/cellSize);
-
-
-
-        if(distanceOne < viewRadius || distanceTwo < viewRadius) {
-            if(!players[0].getHasFlag() && !players[1].getHasFlag()) {
-                flag.draw();
-            } else {
-                flag.delete();
-            }
-        } else {
-            flag.delete();
-        }
-    }
-
-
     private void drawPlayer() {
 
         playerOne.draw();
@@ -184,7 +156,9 @@ public class MazeGfx {
         playerTwo.delete();
         if(players[1].getHasFlag()) {
             playerTwo = new Picture( playerTwo.getX(), playerTwo.getY(), "Player/player 2 30x30 super.png");
+            mazeLayout[21][15].getCellGfx().delete();
             mazeLayout[21][15].setCellGfx(new Picture(21*cellSize+PADDING, 15*cellSize+PADDING, "room_stone30.png"));
+            mazeLayout[21][15].getCellGfx().draw();
         } else {
             playerTwo = new Picture( playerTwo.getX(), playerTwo.getY(), "Player/player 2 30x30.png");
         }
