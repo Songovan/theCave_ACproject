@@ -66,20 +66,20 @@ public class MazeGfx {
 
                 if(row == mazeLayout[0].length - 1) {
                     // Bottom line
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "bWall_stone30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/bottom_wall.png");
                 } else if (mazeLayout[col][row+1].getType() == CellType.ROOM) {
                     // Wall with room below
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "bWall_stone30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/bottom_wall.png");
                 } else {
                     // regular wall
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "mWall_stone30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/wall.png");
                 }
                 break;
             case ROOM:
                 if(col == 21 && row == 15) {
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "room_flag30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/power_crystal.png");
                 } else {
-                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "room_stone30.png");
+                    cellTexture = new Picture(col*cellSize+PADDING, row*cellSize+PADDING, "Wall/room.png");
                 }
                 break;
             default:
