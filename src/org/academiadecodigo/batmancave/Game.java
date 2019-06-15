@@ -3,6 +3,7 @@ package org.academiadecodigo.batmancave;
 import org.academiadecodigo.batmancave.Player.Player;
 import org.academiadecodigo.batmancave.Player.PlayerOne;
 import org.academiadecodigo.batmancave.Player.PlayerTwo;
+import org.academiadecodigo.batmancave.gameobjects.enemies.GhostSelector;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
 import org.academiadecodigo.batmancave.maze.Maze;
 import org.academiadecodigo.batmancave.maze.MovementDetector;
@@ -23,12 +24,13 @@ public class Game {
     private PlayerOne playerOne;
     private PlayerTwo playerTwo;
     private Player[] players;
-    private Ghost ghost;
+    private Ghost[] ghosts;
     private Flag flag;
     private boolean roundEnd;
     private int[] points;
     private File mainTheme = new File("./resources/atTheEndOfAllThings.wav"); // path to your clip
     private File escapeSong = new File("./resources/flee-flag.wav"); // path to your clip
+    private GameStage stage;
 
 
 
@@ -43,6 +45,8 @@ public class Game {
         maze = new Maze(41, 31);
         mazeGfx = new MazeGfx(maze);
         points = new int[]{0,0};
+        stage = GameStage.SEARCHING;
+        ghosts = new Ghost[2];
     }
 
 
@@ -79,9 +83,9 @@ public class Game {
 
         maze.generate();
 
-        mazeGfx.init();
 
-        flag = new Flag(21,15);
+
+        flag = new Flag();
 
         //flag.setMazeGfx(mazeGfx);
 
@@ -95,7 +99,7 @@ public class Game {
 
         players[1] = playerTwo;
 
-        ghost = new Ghost(31,15);
+        //ghost = new Ghost(1);
 
         movementDetector = new MovementDetector(maze, flag);
 
@@ -103,15 +107,15 @@ public class Game {
 
         playerOne.setMazeGfx(mazeGfx);
 
-        ghost.setMovementDetector(movementDetector);
-
-        ghost.setMazeGfx(mazeGfx);
-
         playerTwo.setMovementDetector(movementDetector);
 
         playerTwo.setMazeGfx(mazeGfx);
 
         mazeGfx.setPlayers(players);
+
+        mazeGfx.setFlag(flag);
+
+        mazeGfx.init();
 
         playerOne.walk();
 
@@ -127,16 +131,45 @@ public class Game {
 
     public void start() throws InterruptedException {
         while (!roundEnd) {
-
-
-            Thread.sleep(50);
-            // Move Ghost
-            ghost.move();
+            Thread.sleep(200);
             // Make condition to win level and raise level
+            System.out.println("Stage " + stage);
+            if(stage == GameStage.SEARCHING) {
+                if(playerOne.getHasFlag() || playerTwo.getHasFlag()) {
+                    stage = GameStage.RETRIEVING;
+                    ghosts[0] = new Ghost(1);
+                    ghosts[1] = new Ghost(2);
 
-            roundEnd = movementDetector.roundEnd(players);
+                    ghosts[0].setMazeGfx(mazeGfx);
+                    ghosts[0].setMovementDetector(movementDetector);
+
+                    ghosts[1].setMazeGfx(mazeGfx);
+                    ghosts[1].setMovementDetector(movementDetector);
+
+                    mazeGfx.drawGhost(ghosts);
+                }
+            } else if (stage == GameStage.RETRIEVING) {
+                //System.out.println("RETRIEVING!");
+                ghosts[0].move(GhostSelector.ONE);
+                ghosts[1].move(GhostSelector.TWO);
+
+                Player dead = movementDetector.killedByGhost(ghosts, players);
+
+                if(dead != null) {
+                    if (dead.getHasFlag()) {
+                        dead.reset();
+                        mazeGfx.playerCaught(dead.getType());
+                    }
+                }
+
+                roundEnd = movementDetector.roundEnd(players);
+                //System.out.println("Ghost 1 at: " + ghosts[0].getPos().getCol() + ", " + ghosts[0].getPos().getRow());
+                //System.out.println("Ghost 2 at: " + ghosts[1].getPos().getCol() + ", " + ghosts[1].getPos().getRow());
+                //System.out.println(roundEnd);
+            }
 
         }
+
 
         if (playerOne.getHasFlag()) {
             points[0]++;
@@ -204,6 +237,11 @@ public class Game {
         audioClip.stop();
     }
 
+
+    private enum GameStage {
+        SEARCHING,
+        RETRIEVING
+    }
 
 
 }

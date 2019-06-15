@@ -1,5 +1,6 @@
 package org.academiadecodigo.batmancave.Player;
 
+import org.academiadecodigo.batmancave.PlayersSelector;
 import org.academiadecodigo.batmancave.Position;
 import org.academiadecodigo.batmancave.gameobjects.Usables.*;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
@@ -17,10 +18,12 @@ public abstract class Player implements KeyboardHandler {
     protected MovementDetector movementDetector;
     protected MazeGfx mazeGfx;
     private boolean hasFlag;
+    private PlayersSelector type;
 
-    public Player(int col, int row) {
+    public Player(int col, int row, PlayersSelector type) {
         pos = new Position(col, row);
         hasFlag = false;
+        this.type = type;
     }
 
     //walk method
@@ -64,5 +67,9 @@ public abstract class Player implements KeyboardHandler {
 
         hasFlag = false;
         pos.resetPos();
+    }
+
+    public PlayersSelector getType() {
+        return type;
     }
 }

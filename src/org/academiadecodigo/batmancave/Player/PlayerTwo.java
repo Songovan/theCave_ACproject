@@ -1,5 +1,6 @@
 package org.academiadecodigo.batmancave.Player;
 
+import org.academiadecodigo.batmancave.PlayersSelector;
 import org.academiadecodigo.batmancave.maze.Directions;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -9,7 +10,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class PlayerTwo extends Player implements KeyboardHandler {
 
     public PlayerTwo(int col, int row) {
-        super(col, row);
+        super(col, row, PlayersSelector.TWO);
     }
 
     @Override

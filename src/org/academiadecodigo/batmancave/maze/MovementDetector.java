@@ -9,7 +9,6 @@ public class MovementDetector {
 
     private Maze maze;
     private Flag flag;
-    private Ghost ghost;
 
     public MovementDetector(Maze maze, Flag flag) {
         this.maze = maze;
@@ -24,34 +23,7 @@ public class MovementDetector {
 
         System.out.println(player.getHasFlag());
 
-        switch (direction) {
-            case UP:
-                if (maze.getLayout()[currentCol][currentRow - 1].getType() == CellType.ROOM) {
-                    return true;
-                } else {
-                    return false;
-                }
-            case RIGHT:
-                if (maze.getLayout()[currentCol + 1][currentRow].getType() == CellType.ROOM) {
-                    return true;
-                } else {
-                    return false;
-                }
-            case LEFT:
-                if (maze.getLayout()[currentCol - 1][currentRow].getType() == CellType.ROOM) {
-                    return true;
-                } else {
-                    return false;
-                }
-            case DOWN:
-                if (maze.getLayout()[currentCol][currentRow + 1].getType() == CellType.ROOM) {
-                    return true;
-                } else {
-                    return false;
-                }
-            default:
-                return false;
-        }
+        return moveSwitch(direction, currentCol, currentRow);
 
     }
 
@@ -97,13 +69,14 @@ public class MovementDetector {
         int currentCol = ghost.getPos().getCol();
         int currentRow = ghost.getPos().getRow();
 
+        return moveSwitch(direction, currentCol, currentRow);
 
+    }
+
+    private boolean moveSwitch(Directions direction, int currentCol, int currentRow) {
 
         switch (direction) {
             case UP:
-                //if (maze.getLayout()[currentCol-1][currentRow].getType() == CellType.ROOM || maze.getLayout()[currentCol-1][currentRow].getType() == CellType.ROOM ) {
-                  //  return false;
-                //} else
                 if (maze.getLayout()[currentCol][currentRow - 1].getType() == CellType.ROOM) {
                     return true;
                 } else {
@@ -131,9 +104,27 @@ public class MovementDetector {
                 return false;
         }
 
-
     }
 
+    public Player killedByGhost(Ghost[] ghosts, Player[] players) {
+
+        for (Ghost ghost:
+             ghosts) {
+            for (Player player:
+                 players) {
+
+                if(ghost.getPos().getCol() == player.getPos().getCol() &&
+                    ghost.getPos().getRow() == player.getPos().getRow()) {
+
+                    return player;
+
+                }
+            }
+        }
+
+        return null;
+
+    }
 
 
 }

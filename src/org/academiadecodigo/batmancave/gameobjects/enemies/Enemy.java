@@ -16,6 +16,5 @@ public abstract class Enemy extends GameObject {
     //hit method
     public abstract void hit(Player player);
 
-    //move method
-    public abstract void move ();
+
 }

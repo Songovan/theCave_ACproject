@@ -15,7 +15,6 @@ public class Maze {
 
         // This method fills the layout with cells of type WALL or ROOM based in some rules to start excavating the maze
 
-
         for(int i = 0; i < layout.length; i++) {
 
             for(int j = 0; j < layout[i].length; j++) {
@@ -58,8 +57,6 @@ public class Maze {
 
     public void generate() {
 
-
-
         int[] start = {1,1};
         int[] nextMove = new int[2];
         excavator.getStack().empty();
@@ -85,8 +82,6 @@ public class Maze {
 
         }
 
-
-
     }
 
 
@@ -96,8 +91,6 @@ public class Maze {
         int maxX = layout.length;
 
         int maxY = layout[0].length;
-
-
 
         for (int j = 0; j < maxY; j++) {
 
@@ -121,10 +114,7 @@ public class Maze {
 
         }
 
-
-
     }
-
 
     public Cell[][] getLayout() {
         return layout;

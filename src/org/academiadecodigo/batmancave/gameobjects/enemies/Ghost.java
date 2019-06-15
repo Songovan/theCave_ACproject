@@ -5,18 +5,13 @@ import org.academiadecodigo.batmancave.Player.PlayerOne;
 import org.academiadecodigo.batmancave.Player.PlayerTwo;
 import org.academiadecodigo.batmancave.Position;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
-import org.academiadecodigo.batmancave.maze.Directions;
-import org.academiadecodigo.batmancave.maze.Excavator;
-import org.academiadecodigo.batmancave.maze.MovementDetector;
-import org.academiadecodigo.batmancave.maze.RandomRoom;
+import org.academiadecodigo.batmancave.maze.*;
 
 import java.util.Random;
 
 public class Ghost extends Enemy {
 
     //properties
-    private int ghostLevel;
-    private int speed = 1;
     protected Position pos;
     private MovementDetector movementDetector;
     private MazeGfx mazeGfx;
@@ -26,9 +21,21 @@ public class Ghost extends Enemy {
 
 
 
-    public Ghost(int col, int row) {
-        pos = new Position(col, row);
-        ghostLevel = 1;
+    public Ghost(int player) {
+        initGhostForPlayer(player);
+    }
+
+    public void initGhostForPlayer(int player) {
+
+        int quadrant = 0;
+
+        if( player == 2) {
+            quadrant = 1;
+        }
+
+        int[] tempPos = randomPos(quadrant);
+
+        pos = new Position(tempPos[0], tempPos[1]);
         currentDirection = Directions.RIGHT;
     }
 
@@ -39,7 +46,7 @@ public class Ghost extends Enemy {
 
 
     //move method
-    public void move(){
+    public void move(GhostSelector ghostSelector){
             boolean[] moveVerifier = {false, false, false, false};  //0 - UP, 1 - RIGHT, 2 - LEFT, 3 - DOWN
             if(playerDetected == false){                                   //Se o player não estiver detetado, continuará randomly. No fim do move, irá ver se o Player está no range e alterar ou não o boolean
                 //movementDetector.checkMove(Directions.UP, this) //checkmove: vê a posição atual(row,col)
@@ -79,23 +86,19 @@ public class Ghost extends Enemy {
                 switch(move){
                     case UP:
                         pos.changePosition(0,-1);
-                        System.out.println("col :" + pos.getCol() + " row :" + pos.getRow());
-                        mazeGfx.moveGhost(0, -1);
+                        mazeGfx.moveGhost(0, -1, ghostSelector);
                         break;
                     case RIGHT:
                         pos.changePosition(1,0);
-                        System.out.println("col :" + pos.getCol() + " row :" + pos.getRow());
-                        mazeGfx.moveGhost(1,0);
+                        mazeGfx.moveGhost(1,0, ghostSelector);
                         break;
                     case LEFT:
                         pos.changePosition(-1,0);
-                        System.out.println("col :" + pos.getCol() + " row :" + pos.getRow());
-                        mazeGfx.moveGhost(-1,0);
+                        mazeGfx.moveGhost(-1,0, ghostSelector);
                         break;
                     case DOWN:
                         pos.changePosition(0,1);
-                        System.out.println("col :" + pos.getCol() + " row :" + pos.getRow());
-                        mazeGfx.moveGhost(0,1);
+                        mazeGfx.moveGhost(0,1, ghostSelector);
                         break;
                     default:
                         break;
@@ -161,10 +164,21 @@ public class Ghost extends Enemy {
         }
     }*/
 
+    private int[] randomPos (int quadrant) {
 
+        int col = (int)(Math.random()*(41 / 2) + quadrant * 41 / 2);
 
-    public void setGhostLevel(int ghostLevel) {
-        this.ghostLevel = ghostLevel;
+        int row = (int)(Math.random()*(31 / 2) + quadrant * 31 / 2);
+
+        int[] pos = {col, row};
+
+        System.out.println(col + ", " + row);
+
+        if(col%2 != 0 && col%2 != 0) {
+            return pos;
+        } else {
+            return randomPos(quadrant);
+        }
     }
 
     public void setMazeGfx(MazeGfx mazeGfx) {
