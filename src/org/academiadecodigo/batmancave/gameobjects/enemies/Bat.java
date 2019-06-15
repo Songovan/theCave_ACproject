@@ -11,7 +11,7 @@ public class Bat extends Enemy implements Defeatable{
 
     //hit method
     public void hit (Player player) {
-        player.decreaseHp(damage);
+        //player.decreaseHp(damage);
         getMessage();
     }
 

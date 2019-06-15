@@ -13,27 +13,40 @@ public class Maze {
 
     public void init() {
 
+        // This method fills the layout with cells of type WALL or ROOM based in some rules to start excavating the maze
+
+
         for(int i = 0; i < layout.length; i++) {
 
             for(int j = 0; j < layout[i].length; j++) {
 
                if(i == 0 || i == layout.length - 1) {
 
+                   // EDGES OF MAZE ARE WALLS
+
                    layout[i][j] = new Cell(CellType.WALL);
 
                } else if(i % 2 == 0) {
+
+                   // EVEN COLUMNS ARE WALLS
 
                    layout[i][j] = new Cell(CellType.WALL);
 
                } else if(j == 0 || j == layout[i].length) {
 
+                    // EDGES ARE WALLS
+
                    layout[i][j] = new Cell(CellType.WALL);
 
                } else if(j % 2 == 0) {
 
+                   // EVEN ROWS ARE WALLS
+
                    layout[i][j] = new Cell(CellType.WALL);
 
                } else {
+
+                   // ALL ELSE IS A ROOM
 
                    layout[i][j] = new Cell(CellType.ROOM);
 

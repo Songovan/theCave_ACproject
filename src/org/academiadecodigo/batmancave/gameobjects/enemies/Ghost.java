@@ -165,7 +165,7 @@ public class Ghost extends Enemy {
     //hit method
     @Override
     public void hit (Player player) {
-        player.die();
+        //player.die();
         getMessage();
     }
 
