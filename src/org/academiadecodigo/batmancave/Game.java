@@ -33,8 +33,6 @@ public class Game {
     public void menu(){
         menu = new Menu();
 
-        menu.keyboard();
-
         runSound();
 
         while (!menu.isGameStart()){
@@ -43,10 +41,8 @@ public class Game {
             } catch (InterruptedException e ) {
             }
         }
-        System.out.println("uftcxydj");
-        init();
-        System.out.println("2");
 
+        init();
     }
 
     public void init() {

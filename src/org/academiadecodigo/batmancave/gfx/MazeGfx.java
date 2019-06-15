@@ -44,13 +44,13 @@ public class MazeGfx {
             }
         }
 
-        playerOne = new Picture( 5, cellSize , "robin.png");
+        playerOne = new Picture( 8, cellSize, "Player/player 1 30x30.png");
 
-        playerOne.grow(-5,-5);
+        //playerOne.grow(-5,-5);
 
-        playerTwo = new Picture( (mazeLayout.length-1) * cellSize + 5, (mazeLayout[0].length - 2) * cellSize, "robin.png");
+        playerTwo = new Picture( (mazeLayout.length-1) * cellSize + 11, (mazeLayout[0].length - 2) * cellSize, "Player/player 2 30x30.png");
 
-        playerTwo.grow(-5,-5);
+        //playerTwo.grow(-5,-5);
 
         //DRAW MAZE AROUND PLAYER
         drawMaze();
