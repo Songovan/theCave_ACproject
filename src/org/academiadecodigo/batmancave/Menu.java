@@ -140,6 +140,7 @@ public class Menu implements KeyboardHandler {
                 start.delete();
                 quit.delete();
                 bg.delete();
+
             }
         } else if (e.getKey() == KeyboardEvent.KEY_ESC){
             System.exit(0);

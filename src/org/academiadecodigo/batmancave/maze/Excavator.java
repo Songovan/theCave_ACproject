@@ -6,29 +6,22 @@ import java.util.List;
 
 public class Excavator {
 
-    private Stack stack;
+    private Stack<int[]> stack;
     private Cell[][] layout;
     private int numSteps;
     private final int[] noMove = {0,0};
 
     public Excavator(Cell[][] layout) {
-        stack = new Stack();
+        stack = new Stack<>();
         this.layout = layout;
         numSteps = 0;
     }
 
 
+    private Directions getDirectionToMove(boolean[] availableRooms) {
 
-    public int[] move() {
-
-        // Get current position stored in stack
-
-        int col = ((int[])stack.get(stack.size()-1))[0];
-        int row = ((int[])stack.get(stack.size()-1))[1];
-
-        layout[col][row].excavate();
-
-        boolean[] availableRooms = {false, false, false, false}; // UP - RIGHT - DOWN - LEFT
+        int col = stack.get(stack.size()-1)[0];
+        int row = stack.get(stack.size()-1)[1];
 
         // UP
         if(row - 2 > 0 &&
@@ -58,8 +51,21 @@ public class Excavator {
             availableRooms[3] = true; // Room is available
         }
 
+        return RandomRoom.randomRoom(availableRooms);
+    }
 
-        Directions move = RandomRoom.randomRoom(availableRooms);//randomRoom(availableRooms);
+    public int[] move() {
+
+        // Get current position stored in stack
+
+        int col = stack.get(stack.size()-1)[0];
+        int row = stack.get(stack.size()-1)[1];
+
+        layout[col][row].excavate();
+
+        boolean[] possibleRooms = {false, false, false, false}; // UP - RIGHT - DOWN - LEFT
+
+        Directions move = getDirectionToMove(possibleRooms);
 
         if (move == null) {
             return noMove;
@@ -99,13 +105,16 @@ public class Excavator {
                 break;
         }
 
-        int totalAvailableRooms = 0;
+        int totalAvailableRooms = countAvailableRooms(possibleRooms);
 
+        /*
         for(int i = 0; i < availableRooms.length; i++) {
             if(availableRooms[i]) {
                 totalAvailableRooms++;
             }
         }
+
+         */
 
         int[] moveTo = {0, 0};
 
@@ -117,13 +126,9 @@ public class Excavator {
             return moveTo;
         }
 
-
-
     }
 
-    /*
-
-    private Directions randomRoom(boolean[] arr) {
+    public int countAvailableRooms(boolean[] arr) {
 
         int roomCounter = 0;
 
@@ -133,22 +138,8 @@ public class Excavator {
             }
         }
 
-        List helper = new ArrayList();
-
-        for(int i = 0; i < arr.length; i++) {
-            if(arr[i]) {
-                helper.add(Directions.values()[i]);
-            }
-        }
-
-        if(helper.size() == 0) {
-            return null;
-        } else {
-            return (Directions) helper.get((int)Math.floor(Math.random() * helper.size()));
-        }
-
+        return roomCounter;
     }
-*/
 
     public Stack getStack() {
         return stack;

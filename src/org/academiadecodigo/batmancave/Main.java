@@ -10,12 +10,12 @@ import javax.sound.sampled.Clip;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
 
         /*
-        Maze maze = new Maze(51,31);
+        //Menu menu = new Menu();
 
-        maze.init();
+        Game game = new Game();
 
         //maze.printMaze();
 
@@ -45,9 +45,13 @@ public class Main {
 
         game.menu();
 
+        game.init();
 
-
-
+        try {
+            game.start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     //Menu menu = new Menu();
     }
 
