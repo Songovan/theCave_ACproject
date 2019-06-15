@@ -131,6 +131,7 @@ public class Game {
 
             Thread.sleep(50);
             // Move Ghost
+            ghost.move();
             // Make condition to win level and raise level
 
             roundEnd = movementDetector.roundEnd(players);

@@ -20,6 +20,7 @@ public class Ghost extends Enemy {
     protected Position pos;
     private MovementDetector movementDetector;
     private MazeGfx mazeGfx;
+    private Directions currentDirection;
 
     private boolean playerDetected = false;     //irá no move verificar se tem algum player na range - se tiver, o estado de move altera
 
@@ -28,6 +29,7 @@ public class Ghost extends Enemy {
     public Ghost(int col, int row) {
         pos = new Position(col, row);
         ghostLevel = 1;
+        currentDirection = Directions.RIGHT;
     }
 
     public Position getPos(){
@@ -48,21 +50,32 @@ public class Ghost extends Enemy {
                 moveVerifier[3] = movementDetector.checkMove(Directions.LEFT,this);
                 moveVerifier[2] = movementDetector.checkMove(Directions.DOWN, this);
 
-                Directions move = RandomRoom.randomRoom(moveVerifier);
+                int countPossibleMoves = 0;
 
-                /*
-                int[] trueMoves = new int[4];
-                for(int i = 0; i < moveVerifier.length; i++){
-                    if(moveVerifier[i]){
-                        trueMoves[i] = i;
+                for (boolean dir:
+                     moveVerifier) {
+                    if(dir) {
+                        countPossibleMoves++;
                     }
-                }                                          //now we have the index of the possible moves
+                }
 
-                Random generator = new Random();
-                int moveIndex = generator.nextInt(trueMoves.length);
+                Directions move;
 
+                if (movementDetector.checkMove(currentDirection, this)) {
 
-                 */
+                    if(countPossibleMoves > 2) {
+                        moveVerifier[currentDirection.getOppositeDirection()] = false;  // If there are more than 2 moves can't got backwards.
+                        move = RandomRoom.randomRoom(moveVerifier);                     // Chose random move except back
+                        currentDirection = move;                                        // set new current direction
+                    } else {
+                        move = currentDirection;                                        // keep current direction
+                    }
+
+                } else {
+                    move = RandomRoom.randomRoom(moveVerifier);
+                    currentDirection = move;
+                }
+
                 switch(move){
                     case UP:
                         pos.changePosition(0,-1);

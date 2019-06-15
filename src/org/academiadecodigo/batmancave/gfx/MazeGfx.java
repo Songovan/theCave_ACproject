@@ -141,7 +141,9 @@ public class MazeGfx {
         playerOne.delete();
         if(players[0].getHasFlag()) {
             playerOne = new Picture(playerOne.getX(), playerOne.getY(), "Player/player 1 30x30 super.png" );
+            mazeLayout[21][15].getCellGfx().delete();
             mazeLayout[21][15].setCellGfx(new Picture(21*cellSize+PADDING, 15*cellSize+PADDING, "room_stone30.png"));
+            mazeLayout[21][15].getCellGfx().draw();
         } else {
             playerOne = new Picture(playerOne.getX(), playerOne.getY(), "Player/player 1 30x30.png" );
         }
@@ -209,29 +211,5 @@ public class MazeGfx {
         }
 
         init();
-        /*
-        for (int i = 0; i < mazeLayout.length; i++) {
-            for (int j = 0; j < mazeLayout[0].length; j++) {
-
-                mazeLayout[i][j].setCellGfx(assignCell(i,j));
-
-            }
-        }
-
-        playerOne.delete();
-        playerOne.delete();
-        playerOne = new Picture( cellSize+PADDING, cellSize , "Player/player 1 30x30.png");
-        //playerOne.grow(-5,-5);
-
-        playerTwo.delete();
-        playerTwo = new Picture( (mazeLayout.length-2) * cellSize + PADDING, (mazeLayout[0].length - 2) * cellSize, "Player/player 2 30x30.png");
-        //playerTwo.grow(-5,-5);
-
-        flag = new Picture(Math.ceil(21*cellSize + PADDING), Math.ceil(15) * cellSize + PADDING, "flag.png");
-
-        drawMaze();
-        drawPlayer();
-
-         */
     }
 }

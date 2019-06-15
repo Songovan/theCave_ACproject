@@ -26,10 +26,10 @@ public class Menu implements KeyboardHandler {
         bg.translate(0,100);
         bg.draw();
         //title = new Picture(288, 120, "");
-        start = new Picture(288, 300 + picCorrection, "Menu/Start.png");
-        quit = new Picture(288, 390 + picCorrection, "Menu/Quit.png");
-        startPressed = new Picture(288, 300 + picCorrection, "Menu/Start pressed.png");
-        quitPressed = new Picture(288, 390 + picCorrection, "Menu/Quit pressed.png");
+        start = new Picture(288, 300 + picCorrection, "Start.png");
+        quit = new Picture(288, 390 + picCorrection, "Quit.png");
+        startPressed = new Picture(288, 300 + picCorrection, "Start pressed.png");
+        quitPressed = new Picture(288, 390 + picCorrection, "Quit pressed.png");
         //title.draw();
         start.draw();
         quit.draw();
