@@ -1,13 +1,9 @@
 package org.academiadecodigo.batmancave.gameobjects.enemies;
 
 import org.academiadecodigo.batmancave.Player.Player;
-import org.academiadecodigo.batmancave.Player.PlayerOne;
-import org.academiadecodigo.batmancave.Player.PlayerTwo;
 import org.academiadecodigo.batmancave.Position;
 import org.academiadecodigo.batmancave.gfx.MazeGfx;
 import org.academiadecodigo.batmancave.maze.*;
-
-import java.util.Random;
 
 public class Ghost extends Enemy {
 

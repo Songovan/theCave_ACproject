@@ -1,9 +1,6 @@
 package org.academiadecodigo.batmancave.maze;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import java.awt.*;
 
 public class Cell {
 

@@ -1,7 +1,5 @@
 package org.academiadecodigo.batmancave.gameobjects.Usables;
 
-import org.academiadecodigo.batmancave.gameobjects.GameObject;
-
 public class Flashlight extends Usables {
 
     //properties

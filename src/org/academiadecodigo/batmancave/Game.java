@@ -10,7 +10,6 @@ import org.academiadecodigo.batmancave.maze.Maze;
 import org.academiadecodigo.batmancave.maze.MovementDetector;
 import org.academiadecodigo.batmancave.gameobjects.Usables.*;
 import org.academiadecodigo.batmancave.gameobjects.enemies.Ghost;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.io.File;
 
@@ -71,11 +70,7 @@ public class Game {
 
         maze.generate();
 
-
-
         flag = new Flag();
-
-        //flag.setMazeGfx(mazeGfx);
 
         playerOne = new PlayerOne(1,1);
 
@@ -86,8 +81,6 @@ public class Game {
         players[0] = playerOne;
 
         players[1] = playerTwo;
-
-        //ghost = new Ghost(1);
 
         movementDetector = new MovementDetector(maze, flag);
 
